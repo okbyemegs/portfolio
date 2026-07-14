@@ -13,14 +13,20 @@
    1. COLOUR PALETTE & DESIGN TOKENS
    -------------------------------------------------------------------------- */
 :root {
-  /* ✏️ EDIT COLOURS HERE — the whole site updates automatically */
-  --sage:        #c3cfb4;  /* primary background — soft sage green */
-  --sage-light:  #dde4d2;  /* lighter sage, for gentle section tints */
+  /* ✏️ EDIT COLOURS HERE — the whole site updates automatically.
+     All text/background pairings were checked against WCAG AA contrast —
+     if you swap colours, keep text dark on the light backgrounds! */
+  --blue:        #98CCDE;  /* medium blue — project page headers */
+  --blue-light:  #ADD8E5;  /* light blue — About section */
+  --yellow-pale: #FFFFBE;  /* pale yellow — hero background */
+  --yellow-gold: #FADA5F;  /* golden yellow — password gate, contact accents */
+  --orange:      #FFAE41;  /* orange — Other Fun Things section */
   --cream:       #faf7f0;  /* warm off-white */
   --white:       #ffffff;
-  --forest:      #2f4a38;  /* dark forest green — accents & dark sections */
-  --forest-deep: #24392b;  /* even darker, for the contact section */
-  --ink:         #2a352c;  /* main text colour (soft near-black green) */
+  --navy:        #1B3A4B;  /* deep navy — main text, dark sections */
+  --navy-deep:   #12293A;  /* even darker navy, for hover states */
+  --accent:      #17506B;  /* deep ocean blue — italic accents & links
+                              (dark enough to read on every background) */
 
   /* Fonts (loaded via Google Fonts in each HTML file's <head>) */
   --font-heading: "Fraunces", Georgia, serif;
@@ -43,7 +49,7 @@ body {
   font-family: var(--font-body);
   font-size: 1.0625rem;              /* 17px — comfy editorial body size */
   line-height: 1.7;
-  color: var(--ink);
+  color: var(--navy);
   background-color: var(--cream);
   -webkit-font-smoothing: antialiased;
 }
@@ -54,13 +60,13 @@ h1, h2, h3 {
   font-family: var(--font-heading);
   font-weight: 480;
   line-height: 1.12;
-  color: var(--forest);
+  color: var(--navy);
   letter-spacing: -0.01em;
 }
 
-a { color: var(--forest); }
+a { color: var(--accent); }
 
-::selection { background: var(--forest); color: var(--cream); }
+::selection { background: var(--navy); color: var(--yellow-pale); }
 
 /* Shared centred column used by every section */
 .container {
@@ -77,8 +83,8 @@ a { color: var(--forest); }
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--forest);
-  opacity: 0.65;
+  color: var(--navy);
+  opacity: 0.85;   /* don't go lower — fails contrast on blue/orange sections */
   display: block;
   margin-bottom: 1.25rem;
 }
@@ -88,10 +94,10 @@ a { color: var(--forest); }
   margin-bottom: clamp(1.5rem, 4vw, 2.75rem);
 }
 
-/* Italic green accent — used for "Megan" in the hero and little flourishes */
+/* Italic accent — used for "Megan" in the hero and little flourishes */
 .accent {
   font-style: italic;
-  color: var(--forest);
+  color: var(--accent);
 }
 
 /* --------------------------------------------------------------------------
@@ -117,7 +123,7 @@ html.gate-locked #gate {
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background: var(--sage);
+  background: var(--yellow-gold);
   align-items: center;
   justify-content: center;
   padding: var(--side-pad);
@@ -142,15 +148,15 @@ html.gate-locked body > *:not(#gate) { display: none; }
   flex: 1;
   font: inherit;
   padding: 0.85rem 1.1rem;
-  border: 1.5px solid var(--forest);
+  border: 1.5px solid var(--navy);
   border-radius: 999px;
   background: var(--cream);
-  color: var(--ink);
+  color: var(--navy);
   outline: none;
   min-width: 0;
 }
 
-.gate-form input:focus { box-shadow: 0 0 0 3px rgba(47, 74, 56, 0.25); }
+.gate-form input:focus { box-shadow: 0 0 0 3px rgba(27, 58, 75, 0.25); }
 
 .gate-form button {
   font: inherit;
@@ -158,18 +164,18 @@ html.gate-locked body > *:not(#gate) { display: none; }
   padding: 0.85rem 1.5rem;
   border: none;
   border-radius: 999px;
-  background: var(--forest);
-  color: var(--cream);
+  background: var(--navy);
+  color: var(--yellow-pale);
   cursor: pointer;
 }
 
-.gate-form button:hover { background: var(--forest-deep); }
+.gate-form button:hover { background: var(--navy-deep); }
 
 .gate-error {
   margin-top: 1rem;
   font-size: 0.9rem;
   font-weight: 700;
-  color: var(--forest);
+  color: var(--navy);
   min-height: 1.5em;         /* reserves space so the layout doesn't jump */
 }
 
@@ -180,7 +186,7 @@ html.gate-locked body > *:not(#gate) { display: none; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(195, 207, 180, 0.9);   /* translucent sage */
+  background: rgba(255, 255, 190, 0.92);  /* translucent pale yellow */
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
@@ -199,7 +205,7 @@ html.gate-locked body > *:not(#gate) { display: none; }
   font-size: 1.2rem;
   font-weight: 560;
   text-decoration: none;
-  color: var(--forest);
+  color: var(--navy);
 }
 
 .nav-links { display: flex; gap: clamp(1.25rem, 4vw, 2.5rem); }
@@ -209,21 +215,21 @@ html.gate-locked body > *:not(#gate) { display: none; }
   font-weight: 700;
   letter-spacing: 0.04em;
   text-decoration: none;
-  color: var(--forest);
+  color: var(--navy);
   border-bottom: 2px solid transparent;
   padding-bottom: 2px;
 }
 
-.nav-links a:hover { border-bottom-color: var(--forest); }
+.nav-links a:hover { border-bottom-color: var(--navy); }
 
-/* Project pages get a cream nav instead of sage */
+/* Project pages get a cream nav instead of pale yellow */
 .site-nav--cream { background: rgba(250, 247, 240, 0.9); }
 
 /* --------------------------------------------------------------------------
    5. HERO
    -------------------------------------------------------------------------- */
 .hero {
-  background: var(--sage);
+  background: var(--yellow-pale);
   padding-top: clamp(3rem, 8vw, 6rem);
   padding-bottom: var(--section-pad);
 }
@@ -256,7 +262,7 @@ html.gate-locked body > *:not(#gate) { display: none; }
 /* --------------------------------------------------------------------------
    6. ABOUT ME
    -------------------------------------------------------------------------- */
-.about { background: var(--cream); padding: var(--section-pad) 0; }
+.about { background: var(--blue-light); padding: var(--section-pad) 0; }
 
 .about-body {
   max-width: 44em;
@@ -280,7 +286,7 @@ html.gate-locked body > *:not(#gate) { display: none; }
 .work-card {
   display: block;
   text-decoration: none;
-  color: var(--ink);
+  color: var(--navy);
   border-radius: 1.25rem;
   overflow: hidden;
   background: var(--cream);
@@ -289,7 +295,7 @@ html.gate-locked body > *:not(#gate) { display: none; }
 
 .work-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(47, 74, 56, 0.16);
+  box-shadow: 0 18px 40px rgba(27, 58, 75, 0.18);
 }
 
 .work-card img {
@@ -314,13 +320,13 @@ html.gate-locked body > *:not(#gate) { display: none; }
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--forest);
+  color: var(--accent);
 }
 
 /* --------------------------------------------------------------------------
    8. OTHER FUN THINGS
    -------------------------------------------------------------------------- */
-.fun { background: var(--sage-light); padding: var(--section-pad) 0; }
+.fun { background: var(--orange); padding: var(--section-pad) 0; }
 
 .fun-grid {
   display: grid;
@@ -350,19 +356,19 @@ html.gate-locked body > *:not(#gate) { display: none; }
    9. CONTACT
    -------------------------------------------------------------------------- */
 .contact {
-  background: var(--forest-deep);
-  color: var(--cream);
+  background: var(--navy);
+  color: var(--yellow-pale);
   padding: var(--section-pad) 0;
   text-align: center;
 }
 
-.contact .eyebrow { color: var(--sage); opacity: 0.9; }
+.contact .eyebrow { color: var(--yellow-gold); opacity: 0.9; }
 
-/* On the dark background, accent words flip to sage so they stay readable */
-.contact .accent { color: var(--sage); }
+/* On the dark navy background, accent words flip to gold so they stay readable */
+.contact .accent { color: var(--yellow-gold); }
 
 .contact h2 {
-  color: var(--cream);
+  color: var(--yellow-pale);
   font-size: clamp(2.5rem, 6vw, 4.25rem);
   margin-bottom: 1.25rem;
 }
@@ -378,35 +384,35 @@ html.gate-locked body > *:not(#gate) { display: none; }
   font-family: var(--font-heading);
   font-style: italic;
   font-size: clamp(1.3rem, 3.5vw, 2rem);
-  color: var(--cream);
+  color: var(--yellow-pale);
   text-decoration-thickness: 1.5px;
   text-underline-offset: 6px;
   margin-bottom: 2rem;
   overflow-wrap: anywhere;   /* long email never overflows on small phones */
 }
 
-.contact-email:hover { color: var(--sage); }
+.contact-email:hover { color: var(--yellow-gold); }
 
 .contact-links a {
   display: inline-block;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: var(--cream);
-  border: 1.5px solid var(--sage);
+  color: var(--yellow-pale);
+  border: 1.5px solid var(--yellow-gold);
   border-radius: 999px;
   padding: 0.8rem 1.8rem;
   text-decoration: none;
   margin: 0 0.4rem;
 }
 
-.contact-links a:hover { background: var(--forest); }
+.contact-links a:hover { background: var(--navy-deep); }
 
 /* --------------------------------------------------------------------------
    10. FOOTER
    -------------------------------------------------------------------------- */
 .site-footer {
-  background: var(--forest-deep);
-  color: var(--sage);
+  background: var(--navy);
+  color: var(--blue-light);
   text-align: center;
   font-size: 0.85rem;
   padding: 1.5rem var(--side-pad) 2rem;
@@ -424,7 +430,7 @@ html.gate-locked body > *:not(#gate) { display: none; }
      <figure class="cs-image"> <img> <figcaption> </figure>   ← an image block
    -------------------------------------------------------------------------- */
 .cs-header {
-  background: var(--sage);
+  background: var(--blue);
   padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(3rem, 7vw, 5rem);
 }
 
@@ -434,7 +440,7 @@ html.gate-locked body > *:not(#gate) { display: none; }
   font-weight: 700;
   letter-spacing: 0.05em;
   text-decoration: none;
-  color: var(--forest);
+  color: var(--navy);
   margin-bottom: 2.25rem;
 }
 
@@ -457,7 +463,7 @@ html.gate-locked body > *:not(#gate) { display: none; }
   display: flex;
   flex-wrap: wrap;
   gap: clamp(1.5rem, 5vw, 4rem);
-  border-top: 1.5px solid var(--forest);
+  border-top: 1.5px solid var(--navy);
   padding-top: 1.5rem;
 }
 
@@ -468,7 +474,7 @@ html.gate-locked body > *:not(#gate) { display: none; }
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  opacity: 0.65;
+  opacity: 0.85;   /* don't go lower — fails contrast on the blue header */
   margin-bottom: 0.3rem;
 }
 
@@ -526,7 +532,7 @@ html.gate-locked body > *:not(#gate) { display: none; }
   font-family: var(--font-heading);
   font-style: italic;
   font-size: 1.4rem;
-  color: var(--forest);
+  color: var(--accent);
 }
 
 /* --------------------------------------------------------------------------
