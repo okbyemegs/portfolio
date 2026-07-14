@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- ✏️ EDIT: browser tab title for this project -->
+  <title>Project Title Two — Megan</title>
+  <meta name="robots" content="noindex">
+
+  <!-- Fonts: Fraunces (headings) + Karla (body) — free Google fonts,
+       self-hosted in the fonts/ folder so they load fast and work offline -->
+  <link rel="stylesheet" href="fonts/fonts.css">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Password gate (same on every page — password lives in js/main.js) -->
+  <script>
+    if (sessionStorage.getItem("megan-portfolio-unlocked") !== "yes") {
+      document.documentElement.classList.add("gate-locked");
+    }
+  </script>
+</head>
+<body>
+
+  <!-- PASSWORD GATE -->
+  <div id="gate">
+    <div class="gate-inner">
+      <h1>Hello, <span class="accent">friend.</span></h1>
+      <p>This portfolio is password protected. Pop in the password to come on in.</p>
+      <form class="gate-form" id="gate-form">
+        <input type="password" id="gate-input" placeholder="Password" autocomplete="off" autofocus>
+        <button type="submit">Enter</button>
+      </form>
+      <p class="gate-error" id="gate-error"></p>
+    </div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav class="site-nav site-nav--cream">
+    <div class="container">
+      <a class="nav-brand" href="index.html">Megan's Portfolio</a>
+      <div class="nav-links">
+        <a href="index.html#about">Info</a>
+        <a href="index.html#works">Select Works</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======================================================================
+       CASE STUDY HEADER — title, one-liner, metadata row
+       ====================================================================== -->
+  <header class="cs-header">
+    <div class="container">
+      <a class="back-link" href="index.html">← Back to home</a>
+
+      <!-- ✏️ EDIT: project title -->
+      <h1>Project Title <span class="accent">Two</span></h1>
+
+      <!-- ✏️ EDIT: one-line description of the project -->
+      <p class="cs-tagline">
+        [PLACEHOLDER] One clear sentence about what this project was and the impact it had.
+      </p>
+
+      <!-- ✏️ EDIT: the metadata row -->
+      <dl class="cs-meta">
+        <div>
+          <dt>Name / Role</dt>
+          <dd>Megan — UX Designer &amp; Researcher</dd>
+        </div>
+        <div>
+          <dt>Duration</dt>
+          <dd>[e.g. 8 weeks, Jan–Mar 2026]</dd>
+        </div>
+        <div>
+          <dt>Type of Work</dt>
+          <dd>[e.g. End-to-end UX case study]</dd>
+        </div>
+      </dl>
+    </div>
+  </header>
+
+  <!-- ======================================================================
+       CASE STUDY BODY — a flexible stack of blocks.
+
+       ✏️ HOW TO EDIT THIS SECTION:
+       There are only two kinds of block. Copy, paste, delete, or reorder
+       them freely — the layout will not break.
+
+       TEXT BLOCK:
+         <div class="cs-text">
+           <h2>Section heading</h2>
+           <p>Your paragraph…</p>
+         </div>
+
+       IMAGE BLOCK (add class "cs-image--narrow" for a smaller image):
+         <figure class="cs-image">
+           <img src="images/your-image.jpg" alt="describe the image">
+           <figcaption>Optional caption</figcaption>
+         </figure>
+       ====================================================================== -->
+  <article class="case-study container">
+
+    <div class="cs-text">
+      <h2>The challenge</h2>
+      <p>[PLACEHOLDER] Set the scene: what was the problem, who was it a problem
+        for, and why did it matter? A couple of warm, clear paragraphs work best.</p>
+      <p>[PLACEHOLDER] Add as many paragraphs as you like inside a text block.</p>
+    </div>
+
+    <figure class="cs-image">
+      <!-- ✏️ REPLACE IMAGE: e.g. images/project-1-research.jpg -->
+      <img src="images/project-body-placeholder-wide.svg" alt="[Describe this image for screen readers]">
+      <figcaption>[PLACEHOLDER] Optional caption — delete this line if you don't want one.</figcaption>
+    </figure>
+
+    <div class="cs-text">
+      <h2>Research &amp; discovery</h2>
+      <p>[PLACEHOLDER] What did you do to understand the problem? Interviews,
+        surveys, usability tests? What did you learn that surprised you?</p>
+    </div>
+
+    <figure class="cs-image cs-image--narrow">
+      <!-- ✏️ REPLACE IMAGE: a narrower image, e.g. a mobile screen -->
+      <img src="images/project-body-placeholder-narrow.svg" alt="[Describe this image for screen readers]">
+      <figcaption>[PLACEHOLDER] A narrower image block — nice for mobile screens.</figcaption>
+    </figure>
+
+    <div class="cs-text">
+      <h2>The solution</h2>
+      <p>[PLACEHOLDER] Walk through what you designed and the key decisions
+        behind it. Pair this with image blocks above and below.</p>
+    </div>
+
+    <figure class="cs-image">
+      <img src="images/project-body-placeholder-wide.svg" alt="[Describe this image for screen readers]">
+    </figure>
+
+    <div class="cs-text">
+      <h2>Outcome &amp; reflections</h2>
+      <p>[PLACEHOLDER] What happened as a result? What would you do differently?
+        Recruiters love an honest reflection.</p>
+    </div>
+
+  </article>
+
+  <!-- Link back home at the end of the story -->
+  <div class="cs-footer">
+    <a href="index.html#works">← Back to all works</a>
+  </div>
+
+  <footer class="site-footer">
+    <p>© 2026 Megan — designed with care (and a Shiba Inu on my lap).</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

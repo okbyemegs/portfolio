@@ -1,0 +1,538 @@
+/* ==========================================================================
+   MEGAN'S PORTFOLIO — STYLESHEET
+   ==========================================================================
+   Everything visual lives in this one file.
+
+   ✏️  WANT TO CHANGE COLOURS?  Edit the values in ":root" just below.
+   ✏️  WANT TO CHANGE FONTS?    Fonts are loaded in the <head> of each HTML
+                                file (Google Fonts). Swap the names there AND
+                                in the two "font-family" lines below.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. COLOUR PALETTE & DESIGN TOKENS
+   -------------------------------------------------------------------------- */
+:root {
+  /* ✏️ EDIT COLOURS HERE — the whole site updates automatically */
+  --sage:        #c3cfb4;  /* primary background — soft sage green */
+  --sage-light:  #dde4d2;  /* lighter sage, for gentle section tints */
+  --cream:       #faf7f0;  /* warm off-white */
+  --white:       #ffffff;
+  --forest:      #2f4a38;  /* dark forest green — accents & dark sections */
+  --forest-deep: #24392b;  /* even darker, for the contact section */
+  --ink:         #2a352c;  /* main text colour (soft near-black green) */
+
+  /* Fonts (loaded via Google Fonts in each HTML file's <head>) */
+  --font-heading: "Fraunces", Georgia, serif;
+  --font-body:    "Karla", "Helvetica Neue", Arial, sans-serif;
+
+  /* Spacing rhythm — bigger number = more breathing room */
+  --section-pad: clamp(4.5rem, 10vw, 8.5rem);
+  --side-pad:    clamp(1.25rem, 5vw, 4rem);
+  --max-width:   1160px;
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET & BASE
+   -------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;              /* 17px — comfy editorial body size */
+  line-height: 1.7;
+  color: var(--ink);
+  background-color: var(--cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: 480;
+  line-height: 1.12;
+  color: var(--forest);
+  letter-spacing: -0.01em;
+}
+
+a { color: var(--forest); }
+
+::selection { background: var(--forest); color: var(--cream); }
+
+/* Shared centred column used by every section */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-left: var(--side-pad);
+  padding-right: var(--side-pad);
+}
+
+/* Small label that sits above section headings, e.g. "01 — About" */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--forest);
+  opacity: 0.65;
+  display: block;
+  margin-bottom: 1.25rem;
+}
+
+.section-title {
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  margin-bottom: clamp(1.5rem, 4vw, 2.75rem);
+}
+
+/* Italic green accent — used for "Megan" in the hero and little flourishes */
+.accent {
+  font-style: italic;
+  color: var(--forest);
+}
+
+/* --------------------------------------------------------------------------
+   3. PASSWORD GATE
+   --------------------------------------------------------------------------
+   The gate overlay markup sits at the top of each HTML page.
+   The small script in each page's <head> adds "gate-locked" to <html>
+   before anything renders, so content never flashes.
+   ✏️ The password itself is set at the top of js/main.js.
+   -------------------------------------------------------------------------- */
+#gate { display: none; }
+
+html.gate-locked #gate {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--sage);
+  align-items: center;
+  justify-content: center;
+  padding: var(--side-pad);
+  text-align: center;
+}
+
+/* Hide the actual site while locked */
+html.gate-locked body > *:not(#gate) { display: none; }
+
+.gate-inner { max-width: 26rem; width: 100%; }
+
+.gate-inner h1 {
+  font-size: clamp(2rem, 6vw, 2.75rem);
+  margin-bottom: 0.75rem;
+}
+
+.gate-inner p { margin-bottom: 2rem; }
+
+.gate-form { display: flex; gap: 0.5rem; }
+
+.gate-form input {
+  flex: 1;
+  font: inherit;
+  padding: 0.85rem 1.1rem;
+  border: 1.5px solid var(--forest);
+  border-radius: 999px;
+  background: var(--cream);
+  color: var(--ink);
+  outline: none;
+  min-width: 0;
+}
+
+.gate-form input:focus { box-shadow: 0 0 0 3px rgba(47, 74, 56, 0.25); }
+
+.gate-form button {
+  font: inherit;
+  font-weight: 700;
+  padding: 0.85rem 1.5rem;
+  border: none;
+  border-radius: 999px;
+  background: var(--forest);
+  color: var(--cream);
+  cursor: pointer;
+}
+
+.gate-form button:hover { background: var(--forest-deep); }
+
+.gate-error {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--forest);
+  min-height: 1.5em;         /* reserves space so the layout doesn't jump */
+}
+
+/* --------------------------------------------------------------------------
+   4. NAVIGATION
+   -------------------------------------------------------------------------- */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(195, 207, 180, 0.9);   /* translucent sage */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.site-nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.1rem;
+  padding-bottom: 1.1rem;
+}
+
+.nav-brand {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1.2rem;
+  font-weight: 560;
+  text-decoration: none;
+  color: var(--forest);
+}
+
+.nav-links { display: flex; gap: clamp(1.25rem, 4vw, 2.5rem); }
+
+.nav-links a {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  color: var(--forest);
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+
+.nav-links a:hover { border-bottom-color: var(--forest); }
+
+/* Project pages get a cream nav instead of sage */
+.site-nav--cream { background: rgba(250, 247, 240, 0.9); }
+
+/* --------------------------------------------------------------------------
+   5. HERO
+   -------------------------------------------------------------------------- */
+.hero {
+  background: var(--sage);
+  padding-top: clamp(3rem, 8vw, 6rem);
+  padding-bottom: var(--section-pad);
+}
+
+.hero .container {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: clamp(2.75rem, 7.5vw, 5.5rem);
+  margin-bottom: 1.75rem;
+}
+
+.hero-intro {
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  max-width: 34em;
+  line-height: 1.75;
+}
+
+.hero-portrait img {
+  width: 100%;
+  border-radius: 1.25rem;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+/* --------------------------------------------------------------------------
+   6. ABOUT ME
+   -------------------------------------------------------------------------- */
+.about { background: var(--cream); padding: var(--section-pad) 0; }
+
+.about-body {
+  max-width: 44em;
+  font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+}
+
+.about-body p + p { margin-top: 1.4em; }
+
+/* --------------------------------------------------------------------------
+   7. MY WORKS — the 3 project cards
+   -------------------------------------------------------------------------- */
+.works { background: var(--white); padding: var(--section-pad) 0; }
+
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+/* The whole card is one big link */
+.work-card {
+  display: block;
+  text-decoration: none;
+  color: var(--ink);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  background: var(--cream);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.work-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(47, 74, 56, 0.16);
+}
+
+.work-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.work-card-text { padding: 1.5rem 1.5rem 1.75rem; }
+
+.work-card h3 {
+  font-size: 1.45rem;
+  margin-bottom: 0.5rem;
+}
+
+.work-card p { font-size: 0.98rem; opacity: 0.85; }
+
+.work-card-more {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--forest);
+}
+
+/* --------------------------------------------------------------------------
+   8. OTHER FUN THINGS
+   -------------------------------------------------------------------------- */
+.fun { background: var(--sage-light); padding: var(--section-pad) 0; }
+
+.fun-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.25rem, 3vw, 2rem);
+}
+
+.fun-card {
+  background: var(--cream);
+  border-radius: 1.25rem;
+  overflow: hidden;
+}
+
+.fun-card img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.fun-card-text { padding: 1.4rem 1.5rem 1.6rem; }
+
+.fun-card h3 { font-size: 1.35rem; margin-bottom: 0.4rem; }
+
+.fun-card p { font-size: 0.98rem; opacity: 0.9; }
+
+/* --------------------------------------------------------------------------
+   9. CONTACT
+   -------------------------------------------------------------------------- */
+.contact {
+  background: var(--forest-deep);
+  color: var(--cream);
+  padding: var(--section-pad) 0;
+  text-align: center;
+}
+
+.contact .eyebrow { color: var(--sage); opacity: 0.9; }
+
+/* On the dark background, accent words flip to sage so they stay readable */
+.contact .accent { color: var(--sage); }
+
+.contact h2 {
+  color: var(--cream);
+  font-size: clamp(2.5rem, 6vw, 4.25rem);
+  margin-bottom: 1.25rem;
+}
+
+.contact p {
+  max-width: 32em;
+  margin: 0 auto 2.5rem;
+  opacity: 0.9;
+}
+
+.contact-email {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: clamp(1.3rem, 3.5vw, 2rem);
+  color: var(--cream);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 6px;
+  margin-bottom: 2rem;
+  overflow-wrap: anywhere;   /* long email never overflows on small phones */
+}
+
+.contact-email:hover { color: var(--sage); }
+
+.contact-links a {
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--cream);
+  border: 1.5px solid var(--sage);
+  border-radius: 999px;
+  padding: 0.8rem 1.8rem;
+  text-decoration: none;
+  margin: 0 0.4rem;
+}
+
+.contact-links a:hover { background: var(--forest); }
+
+/* --------------------------------------------------------------------------
+   10. FOOTER
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background: var(--forest-deep);
+  color: var(--sage);
+  text-align: center;
+  font-size: 0.85rem;
+  padding: 1.5rem var(--side-pad) 2rem;
+  opacity: 0.9;
+}
+
+/* --------------------------------------------------------------------------
+   11. PROJECT (CASE STUDY) PAGES
+   --------------------------------------------------------------------------
+   The body of a case study is just a stack of blocks inside <article
+   class="case-study">. Each block is self-contained — copy, paste, delete
+   or reorder them freely and the layout will not break:
+
+     <div class="cs-text"> ...paragraphs... </div>       ← a text block
+     <figure class="cs-image"> <img> <figcaption> </figure>   ← an image block
+   -------------------------------------------------------------------------- */
+.cs-header {
+  background: var(--sage);
+  padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(3rem, 7vw, 5rem);
+}
+
+.back-link {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  color: var(--forest);
+  margin-bottom: 2.25rem;
+}
+
+.back-link:hover { text-decoration: underline; }
+
+.cs-header h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  margin-bottom: 1rem;
+  max-width: 18em;
+}
+
+.cs-tagline {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  max-width: 36em;
+  margin-bottom: 2.75rem;
+}
+
+/* The metadata row: Role / Duration / Type of work */
+.cs-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1.5rem, 5vw, 4rem);
+  border-top: 1.5px solid var(--forest);
+  padding-top: 1.5rem;
+}
+
+.cs-meta div { min-width: 10rem; }
+
+.cs-meta dt {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.65;
+  margin-bottom: 0.3rem;
+}
+
+.cs-meta dd { font-weight: 700; }
+
+/* The flexible body */
+.case-study {
+  padding: var(--section-pad) 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 6vw, 4.5rem);   /* space between every block */
+}
+
+.cs-text {
+  max-width: 42em;                    /* comfortable reading measure */
+  margin: 0 auto;
+  width: 100%;
+}
+
+.cs-text h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  margin-bottom: 1rem;
+}
+
+.cs-text p + p { margin-top: 1.3em; }
+
+.cs-image { margin: 0; }
+
+.cs-image img {
+  width: 100%;
+  border-radius: 1.25rem;
+}
+
+.cs-image figcaption {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin-top: 0.8rem;
+  text-align: center;
+}
+
+/* Optional narrower image — add class "cs-image--narrow" to the <figure> */
+.cs-image--narrow {
+  max-width: 42rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Prev/next-style footer link on case studies */
+.cs-footer {
+  text-align: center;
+  padding-bottom: var(--section-pad);
+}
+
+.cs-footer a {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--forest);
+}
+
+/* --------------------------------------------------------------------------
+   12. RESPONSIVE — tablets & phones
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .works-grid { grid-template-columns: 1fr; max-width: 30rem; margin: 0 auto; }
+  .hero .container { grid-template-columns: 1fr; }
+  .hero-portrait { max-width: 24rem; }
+}
+
+@media (max-width: 640px) {
+  .fun-grid { grid-template-columns: 1fr; }
+  .cs-meta { flex-direction: column; gap: 1.25rem; }
+  .gate-form { flex-direction: column; }
+  .contact-links a { margin: 0.3rem 0.2rem; }
+}

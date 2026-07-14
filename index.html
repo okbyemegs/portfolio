@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Megan — UX &amp; Experience Designer</title>
+  <meta name="description" content="Portfolio of Megan, UX / experience designer and researcher.">
+  <meta name="robots" content="noindex">  <!-- keeps the site out of Google while it's private -->
+
+  <!-- Fonts: Fraunces (headings) + Karla (body) — free Google fonts,
+       self-hosted in the fonts/ folder so they load fast and work offline -->
+  <link rel="stylesheet" href="fonts/fonts.css">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Password gate: hides the page instantly if the visitor hasn't unlocked it.
+       ✏️ The password itself is set at the top of js/main.js -->
+  <script>
+    if (sessionStorage.getItem("megan-portfolio-unlocked") !== "yes") {
+      document.documentElement.classList.add("gate-locked");
+    }
+  </script>
+</head>
+<body>
+
+  <!-- ======================================================================
+       PASSWORD GATE (shown only until the correct password is entered)
+       ✏️ You can edit the welcome text below. Change the password in js/main.js
+       ====================================================================== -->
+  <div id="gate">
+    <div class="gate-inner">
+      <h1>Hello, <span class="accent">friend.</span></h1>
+      <p>This portfolio is password protected. Pop in the password to come on in.</p>
+      <form class="gate-form" id="gate-form">
+        <label for="gate-input" class="visually-hidden" hidden>Password</label>
+        <input type="password" id="gate-input" placeholder="Password" autocomplete="off" autofocus>
+        <button type="submit">Enter</button>
+      </form>
+      <p class="gate-error" id="gate-error"></p>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       NAVIGATION
+       ====================================================================== -->
+  <nav class="site-nav">
+    <div class="container">
+      <a class="nav-brand" href="index.html">Megan's Portfolio</a>
+      <div class="nav-links">
+        <a href="#about">Info</a>
+        <a href="#works">Select Works</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======================================================================
+       1. HERO
+       ====================================================================== -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-text">
+        <h1>Hi there, I am <span class="accent">Megan</span>.</h1>
+        <!-- ✏️ EDIT: your short hero intro paragraph -->
+        <p class="hero-intro">
+          I'm a UX and experience designer &amp; researcher who loves turning messy,
+          human problems into calm, considered products. Currently designing,
+          researching, and asking "but <em>why</em>?" a lot.
+        </p>
+      </div>
+      <div class="hero-portrait">
+        <!-- ✏️ REPLACE IMAGE: drop your portrait photo into the images/ folder
+             (e.g. images/portrait.jpg) and update the src below -->
+        <img src="images/portrait-placeholder.svg" alt="Portrait of Megan">
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ====================================================================
+         2. ABOUT ME
+         ==================================================================== -->
+    <section class="about" id="about">
+      <div class="container">
+        <span class="eyebrow">01 — About Me</span>
+        <h2 class="section-title">A little bit <span class="accent">about me</span></h2>
+        <div class="about-body">
+          <!-- ✏️ EDIT: replace these placeholder paragraphs with your real story -->
+          <p>
+            [PLACEHOLDER — replace me!] Hello hello! I'm Megan, a designer and
+            researcher who believes the best products feel like a warm
+            conversation. I spend my days sketching flows, interviewing users,
+            and getting far too excited about a well-organised research repository.
+          </p>
+          <p>
+            [PLACEHOLDER — replace me!] When I'm not designing, you'll find me
+            hunting down the best noodles in the city, filming slightly chaotic
+            TikToks, or being bossed around by my Shiba Inu, Mieko. I care deeply
+            about designing with empathy — and about having fun while doing it.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         3. MY WORKS — exactly 3 project cards
+         Each card links to its own case study page (project-1.html etc.)
+         ==================================================================== -->
+    <section class="works" id="works">
+      <div class="container">
+        <span class="eyebrow">02 — Select Works</span>
+        <h2 class="section-title">My <span class="accent">works</span></h2>
+
+        <div class="works-grid">
+
+          <!-- CARD 1 — ✏️ edit title & description; replace the image -->
+          <a class="work-card" href="project-1.html">
+            <img src="images/project-1-cover-placeholder.svg" alt="Project One cover image">
+            <div class="work-card-text">
+              <h3>Project Title One</h3>
+              <p>[PLACEHOLDER] A one-or-two line description of this project — what it was and why it mattered.</p>
+              <span class="work-card-more">Read case study →</span>
+            </div>
+          </a>
+
+          <!-- CARD 2 — ✏️ edit title & description; replace the image -->
+          <a class="work-card" href="project-2.html">
+            <img src="images/project-2-cover-placeholder.svg" alt="Project Two cover image">
+            <div class="work-card-text">
+              <h3>Project Title Two</h3>
+              <p>[PLACEHOLDER] A one-or-two line description of this project — what it was and why it mattered.</p>
+              <span class="work-card-more">Read case study →</span>
+            </div>
+          </a>
+
+          <!-- CARD 3 — ✏️ edit title & description; replace the image -->
+          <a class="work-card" href="project-3.html">
+            <img src="images/project-3-cover-placeholder.svg" alt="Project Three cover image">
+            <div class="work-card-text">
+              <h3>Project Title Three</h3>
+              <p>[PLACEHOLDER] A one-or-two line description of this project — what it was and why it mattered.</p>
+              <span class="work-card-more">Read case study →</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         4. OTHER FUN THINGS — the personal, playful stuff
+         ✏️ Add or remove cards freely — just copy/paste a whole
+            <div class="fun-card"> ... </div> block
+         ==================================================================== -->
+    <section class="fun" id="fun">
+      <div class="container">
+        <span class="eyebrow">03 — Other Fun Things</span>
+        <h2 class="section-title">Life outside <span class="accent">the Figma file</span></h2>
+
+        <div class="fun-grid">
+
+          <div class="fun-card">
+            <!-- ✏️ REPLACE IMAGE: a screenshot of one of your vibe-coding projects -->
+            <img src="images/fun-coding-placeholder.svg" alt="Screenshot of a vibe-coding project">
+            <div class="fun-card-text">
+              <h3>Vibe-coding projects 💻</h3>
+              <p>[PLACEHOLDER] Little apps and experiments I build for fun — link them here!</p>
+            </div>
+          </div>
+
+          <div class="fun-card">
+            <!-- ✏️ REPLACE IMAGE: a photo of Mieko! -->
+            <img src="images/fun-mieko-placeholder.svg" alt="Mieko the Shiba Inu">
+            <div class="fun-card-text">
+              <h3>Mieko the Shiba 🐕</h3>
+              <p>[PLACEHOLDER] Chief morale officer, professional napper, occasional design critic.</p>
+            </div>
+          </div>
+
+          <div class="fun-card">
+            <!-- ✏️ REPLACE IMAGE: a favourite food photo -->
+            <img src="images/fun-food-placeholder.svg" alt="A favourite food adventure">
+            <div class="fun-card-text">
+              <h3>Food adventures 🍜</h3>
+              <p>[PLACEHOLDER] Always chasing the next great bowl of noodles. Recommendations welcome.</p>
+            </div>
+          </div>
+
+          <div class="fun-card">
+            <!-- ✏️ REPLACE IMAGE: a TikTok screenshot or behind-the-scenes photo -->
+            <img src="images/fun-tiktok-placeholder.svg" alt="TikTok content preview">
+            <div class="fun-card-text">
+              <h3>TikTok things 🎬</h3>
+              <p>[PLACEHOLDER] Where I overshare about design, dogs, and dinner. Follow along!</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         5. CONTACT ME
+         ==================================================================== -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <span class="eyebrow">04 — Contact</span>
+        <h2>Let's make something <span class="accent">lovely</span> together.</h2>
+        <p>
+          <!-- ✏️ EDIT: your contact call-to-action -->
+          Whether it's a project, a role, or just a great noodle recommendation —
+          my inbox is always open.
+        </p>
+        <!-- ✏️ EDIT: your email address (change it in BOTH places below) -->
+        <a class="contact-email" href="mailto:megansimshihui@gmail.com">megansimshihui@gmail.com</a>
+        <div class="contact-links">
+          <!-- ✏️ EDIT: paste your real LinkedIn URL below -->
+          <a href="https://www.linkedin.com/in/YOUR-LINKEDIN-HERE" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="mailto:megansimshihui@gmail.com">Say hello 👋</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <!-- ✏️ EDIT: footer text -->
+    <p>© 2026 Megan — designed with care (and a Shiba Inu on my lap).</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
