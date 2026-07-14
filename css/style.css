@@ -97,8 +97,8 @@ a { color: var(--forest); }
 /* --------------------------------------------------------------------------
    3. PASSWORD GATE
    --------------------------------------------------------------------------
-   The gate overlay markup sits at the top of each HTML page.
-   The small script in each page's <head> adds "gate-locked" to <html>
+   The gate overlay markup sits at the top of index.html (landing page only).
+   The small script in that page's <head> adds "gate-locked" to <html>
    before anything renders, so content never flashes.
    ✏️ The password itself is set at the top of js/main.js.
    -------------------------------------------------------------------------- */

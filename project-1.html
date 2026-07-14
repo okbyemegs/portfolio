@@ -13,27 +13,9 @@
 
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- Password gate (same on every page — password lives in js/main.js) -->
-  <script>
-    if (sessionStorage.getItem("megan-portfolio-unlocked") !== "yes") {
-      document.documentElement.classList.add("gate-locked");
-    }
-  </script>
 </head>
 <body>
 
-  <!-- PASSWORD GATE -->
-  <div id="gate">
-    <div class="gate-inner">
-      <h1>Hello, <span class="accent">friend.</span></h1>
-      <p>This portfolio is password protected. Pop in the password to come on in.</p>
-      <form class="gate-form" id="gate-form">
-        <input type="password" id="gate-input" placeholder="Password" autocomplete="off" autofocus>
-        <button type="submit">Enter</button>
-      </form>
-      <p class="gate-error" id="gate-error"></p>
-    </div>
-  </div>
 
   <!-- NAVIGATION -->
   <nav class="site-nav site-nav--cream">

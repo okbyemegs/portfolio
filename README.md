@@ -175,9 +175,10 @@ to the browser. The good news: hosts offer this as a tick-box feature.
 
 (Pricing changes — double-check each host's current plans.)
 
-Once you have real protection turned on, you can remove the front-end gate
+The gate only appears on the landing page (`index.html`) — the front door of
+the site. Once you have real protection turned on, you can remove it entirely
 if you like: delete the `<div id="gate">…</div>` block and the small
-`<script>` in the `<head>` of each HTML page.
+`<script>` in the `<head>` of `index.html`.
 
 ---
 
