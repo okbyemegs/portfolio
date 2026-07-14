@@ -95,6 +95,14 @@ a { color: var(--forest); }
 }
 
 /* --------------------------------------------------------------------------
+   TICKLE EFFECT (hero) — styling hooks for js/tickle.js
+   Words inside a "tickle-words" element become inline-blocks so they can
+   rotate individually. The intensity knobs live at the top of js/tickle.js.
+   -------------------------------------------------------------------------- */
+.tickle, .tickle-unit { will-change: transform; }
+.tickle-unit { display: inline-block; }
+
+/* --------------------------------------------------------------------------
    3. PASSWORD GATE
    --------------------------------------------------------------------------
    The gate overlay markup sits at the top of index.html (landing page only).

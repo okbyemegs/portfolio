@@ -30,6 +30,9 @@ var SITE_PASSWORD = "mieko";   // ← change "mieko" to whatever you like
       // Remember the visitor for this browser tab, then reveal the site.
       sessionStorage.setItem("megan-portfolio-unlocked", "yes");
       document.documentElement.classList.remove("gate-locked");
+      // Let other scripts (like the tickle effect) know the page is now
+      // visible, so they can re-measure where everything is.
+      window.dispatchEvent(new Event("portfolio:unlocked"));
     } else {
       error.textContent = "Hmm, that's not it — try again?";
       input.value = "";
