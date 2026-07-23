@@ -18,8 +18,10 @@
      if you swap colours, keep text dark on the light backgrounds! */
   --blue:        #98CCDE;  /* medium blue — project page headers */
   --blue-light:  #ADD8E5;  /* light blue — About section */
-  --cream:       #FFF1C1;  /* soft cream — hero, cards, project page body */
-  --orange-soft: #FFCC80;  /* soft orange — gate, Fun Things, accents on navy */
+  --cream:       #FFF1C1;  /* soft cream — hero, password gate, cards */
+  --yellow:      #FCE6A9;  /* warm yellow — Other Fun Things section */
+  --orange-soft: #FFCC80;  /* soft orange — accents on the navy sections */
+  --off-white:   #FAF7F0;  /* warm off-white — project page body */
   --white:       #ffffff;
   --navy:        #1B3A4B;  /* deep navy — main text, dark sections */
   --navy-deep:   #12293A;  /* even darker navy, for hover states */
@@ -48,7 +50,7 @@ body {
   font-size: 1.0625rem;              /* 17px — comfy editorial body size */
   line-height: 1.7;
   color: var(--navy);
-  background-color: var(--cream);
+  background-color: var(--off-white);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -121,7 +123,7 @@ html.gate-locked #gate {
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background: var(--orange-soft);
+  background: var(--cream);
   align-items: center;
   justify-content: center;
   padding: var(--side-pad);
@@ -148,7 +150,7 @@ html.gate-locked body > *:not(#gate) { display: none; }
   padding: 0.85rem 1.1rem;
   border: 1.5px solid var(--navy);
   border-radius: 999px;
-  background: var(--cream);
+  background: var(--off-white);
   color: var(--navy);
   outline: none;
   min-width: 0;
@@ -220,8 +222,8 @@ html.gate-locked body > *:not(#gate) { display: none; }
 
 .nav-links a:hover { border-bottom-color: var(--navy); }
 
-/* Project pages use the same soft-cream nav */
-.site-nav--cream { background: rgba(255, 241, 193, 0.9); }
+/* Project pages get an off-white nav to match their body */
+.site-nav--cream { background: rgba(250, 247, 240, 0.9); }
 
 /* --------------------------------------------------------------------------
    5. HERO
@@ -324,7 +326,7 @@ html.gate-locked body > *:not(#gate) { display: none; }
 /* --------------------------------------------------------------------------
    8. OTHER FUN THINGS
    -------------------------------------------------------------------------- */
-.fun { background: var(--orange-soft); padding: var(--section-pad) 0; }
+.fun { background: var(--yellow); padding: var(--section-pad) 0; }
 
 .fun-grid {
   display: grid;
