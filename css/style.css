@@ -18,10 +18,8 @@
      if you swap colours, keep text dark on the light backgrounds! */
   --blue:        #98CCDE;  /* medium blue — project page headers */
   --blue-light:  #ADD8E5;  /* light blue — About section */
-  --yellow-pale: #FFFFBE;  /* pale yellow — hero background */
-  --yellow-gold: #FADA5F;  /* golden yellow — password gate, contact accents */
-  --orange:      #FFAE41;  /* orange — Other Fun Things section */
-  --cream:       #faf7f0;  /* warm off-white */
+  --cream:       #FFF1C1;  /* soft cream — hero, cards, project page body */
+  --orange-soft: #FFCC80;  /* soft orange — gate, Fun Things, accents on navy */
   --white:       #ffffff;
   --navy:        #1B3A4B;  /* deep navy — main text, dark sections */
   --navy-deep:   #12293A;  /* even darker navy, for hover states */
@@ -66,7 +64,7 @@ h1, h2, h3 {
 
 a { color: var(--accent); }
 
-::selection { background: var(--navy); color: var(--yellow-pale); }
+::selection { background: var(--navy); color: var(--cream); }
 
 /* Shared centred column used by every section */
 .container {
@@ -123,7 +121,7 @@ html.gate-locked #gate {
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background: var(--yellow-gold);
+  background: var(--orange-soft);
   align-items: center;
   justify-content: center;
   padding: var(--side-pad);
@@ -165,7 +163,7 @@ html.gate-locked body > *:not(#gate) { display: none; }
   border: none;
   border-radius: 999px;
   background: var(--navy);
-  color: var(--yellow-pale);
+  color: var(--cream);
   cursor: pointer;
 }
 
@@ -186,7 +184,7 @@ html.gate-locked body > *:not(#gate) { display: none; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 190, 0.92);  /* translucent pale yellow */
+  background: rgba(255, 241, 193, 0.92);  /* translucent soft cream */
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
@@ -222,14 +220,14 @@ html.gate-locked body > *:not(#gate) { display: none; }
 
 .nav-links a:hover { border-bottom-color: var(--navy); }
 
-/* Project pages get a cream nav instead of pale yellow */
-.site-nav--cream { background: rgba(250, 247, 240, 0.9); }
+/* Project pages use the same soft-cream nav */
+.site-nav--cream { background: rgba(255, 241, 193, 0.9); }
 
 /* --------------------------------------------------------------------------
    5. HERO
    -------------------------------------------------------------------------- */
 .hero {
-  background: var(--yellow-pale);
+  background: var(--cream);
   padding-top: clamp(3rem, 8vw, 6rem);
   padding-bottom: var(--section-pad);
 }
@@ -326,7 +324,7 @@ html.gate-locked body > *:not(#gate) { display: none; }
 /* --------------------------------------------------------------------------
    8. OTHER FUN THINGS
    -------------------------------------------------------------------------- */
-.fun { background: var(--orange); padding: var(--section-pad) 0; }
+.fun { background: var(--orange-soft); padding: var(--section-pad) 0; }
 
 .fun-grid {
   display: grid;
@@ -357,18 +355,18 @@ html.gate-locked body > *:not(#gate) { display: none; }
    -------------------------------------------------------------------------- */
 .contact {
   background: var(--navy);
-  color: var(--yellow-pale);
+  color: var(--cream);
   padding: var(--section-pad) 0;
   text-align: center;
 }
 
-.contact .eyebrow { color: var(--yellow-gold); opacity: 0.9; }
+.contact .eyebrow { color: var(--orange-soft); opacity: 0.9; }
 
-/* On the dark navy background, accent words flip to gold so they stay readable */
-.contact .accent { color: var(--yellow-gold); }
+/* On the dark navy background, accent words flip to soft orange so they stay readable */
+.contact .accent { color: var(--orange-soft); }
 
 .contact h2 {
-  color: var(--yellow-pale);
+  color: var(--cream);
   font-size: clamp(2.5rem, 6vw, 4.25rem);
   margin-bottom: 1.25rem;
 }
@@ -384,21 +382,21 @@ html.gate-locked body > *:not(#gate) { display: none; }
   font-family: var(--font-heading);
   font-style: italic;
   font-size: clamp(1.3rem, 3.5vw, 2rem);
-  color: var(--yellow-pale);
+  color: var(--cream);
   text-decoration-thickness: 1.5px;
   text-underline-offset: 6px;
   margin-bottom: 2rem;
   overflow-wrap: anywhere;   /* long email never overflows on small phones */
 }
 
-.contact-email:hover { color: var(--yellow-gold); }
+.contact-email:hover { color: var(--orange-soft); }
 
 .contact-links a {
   display: inline-block;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: var(--yellow-pale);
-  border: 1.5px solid var(--yellow-gold);
+  color: var(--cream);
+  border: 1.5px solid var(--orange-soft);
   border-radius: 999px;
   padding: 0.8rem 1.8rem;
   text-decoration: none;
@@ -412,7 +410,7 @@ html.gate-locked body > *:not(#gate) { display: none; }
    -------------------------------------------------------------------------- */
 .site-footer {
   background: var(--navy);
-  color: var(--blue-light);
+  color: var(--cream);
   text-align: center;
   font-size: 0.85rem;
   padding: 1.5rem var(--side-pad) 2rem;
