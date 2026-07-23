@@ -18,8 +18,9 @@
      if you swap colours, keep text dark on the light backgrounds! */
   --blue:        #98CCDE;  /* medium blue — project page headers */
   --blue-light:  #ADD8E5;  /* light blue — About section */
-  --cream:       #FFF1C1;  /* soft cream — hero, gate, Fun Things cards */
-  --orange-soft: #FFCC80;  /* soft orange — Fun Things bg, accents on navy */
+  --cream:       #FFF1C1;  /* soft cream — hero and password gate */
+  --yellow:      #FCE6A9;  /* warm cream-yellow — Other Fun Things bg */
+  --orange-soft: #FFCC80;  /* soft orange — accents on navy sections/cards */
   --off-white:   #FAF7F0;  /* warm off-white — My Works bg, project pages */
   --white:       #ffffff;  /* pure white — My Works cards */
   --navy:        #1B3A4B;  /* deep navy — main text, dark sections */
@@ -106,6 +107,34 @@ a { color: var(--accent); }
    -------------------------------------------------------------------------- */
 .tickle, .tickle-unit { will-change: transform; }
 .tickle-unit { display: inline-block; }
+
+/* --------------------------------------------------------------------------
+   STAR CURSOR & GLITTER TRAIL — styling for js/sparkle.js
+   The star cursor itself and all the tuning knobs (star size, sparkle
+   density, lifespan) live at the top of js/sparkle.js.
+   -------------------------------------------------------------------------- */
+#sparkle-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;   /* sparkles never block clicks */
+  z-index: 900;
+  overflow: hidden;
+}
+
+.sparkle {
+  position: absolute;
+  /* four-point star shape */
+  clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: sparkle-pop var(--life, 700ms) ease-out forwards;
+}
+
+@keyframes sparkle-pop {
+  0%   { opacity: 0; transform: translate(0, 0) scale(0) rotate(0deg); }
+  25%  { opacity: 1; transform: translate(calc(var(--dx) * 0.3), calc(var(--dy) * 0.3)) scale(1) rotate(25deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.15) rotate(80deg); }
+}
 
 /* --------------------------------------------------------------------------
    3. PASSWORD GATE
@@ -327,7 +356,7 @@ html.gate-locked body > *:not(#gate) { display: none; }
 /* --------------------------------------------------------------------------
    8. OTHER FUN THINGS
    -------------------------------------------------------------------------- */
-.fun { background: var(--orange-soft); padding: var(--section-pad) 0; }
+.fun { background: var(--yellow); padding: var(--section-pad) 0; }
 
 .fun-grid {
   display: grid;
@@ -336,7 +365,7 @@ html.gate-locked body > *:not(#gate) { display: none; }
 }
 
 .fun-card {
-  background: var(--cream);
+  background: var(--navy);   /* inverted: dark cards on the light section */
   border-radius: 1.25rem;
   overflow: hidden;
 }
@@ -349,9 +378,13 @@ html.gate-locked body > *:not(#gate) { display: none; }
 
 .fun-card-text { padding: 1.4rem 1.5rem 1.6rem; }
 
-.fun-card h3 { font-size: 1.35rem; margin-bottom: 0.4rem; }
+.fun-card h3 { font-size: 1.35rem; margin-bottom: 0.4rem; color: var(--white); }
 
-.fun-card p { font-size: 0.98rem; opacity: 0.9; }
+.fun-card p { font-size: 0.98rem; opacity: 0.9; color: var(--white); }
+
+/* If you want to highlight a word inside a navy fun card, wrap it in
+   <span class="accent"> — it turns soft orange there so it stays readable */
+.fun-card .accent { color: var(--orange-soft); }
 
 /* --------------------------------------------------------------------------
    9. CONTACT
