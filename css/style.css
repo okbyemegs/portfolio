@@ -18,11 +18,10 @@
      if you swap colours, keep text dark on the light backgrounds! */
   --blue:        #98CCDE;  /* medium blue — project page headers */
   --blue-light:  #ADD8E5;  /* light blue — About section */
-  --cream:       #FFF1C1;  /* soft cream — hero, password gate, cards */
-  --yellow:      #FCE6A9;  /* warm yellow — Other Fun Things section */
-  --orange-soft: #FFCC80;  /* soft orange — accents on the navy sections */
-  --off-white:   #FAF7F0;  /* warm off-white — project page body */
-  --white:       #ffffff;
+  --cream:       #FFF1C1;  /* soft cream — hero, gate, Fun Things cards */
+  --orange-soft: #FFCC80;  /* soft orange — Fun Things bg, accents on navy */
+  --off-white:   #FAF7F0;  /* warm off-white — My Works bg, project pages */
+  --white:       #ffffff;  /* pure white — My Works cards */
   --navy:        #1B3A4B;  /* deep navy — main text, dark sections */
   --navy-deep:   #12293A;  /* even darker navy, for hover states */
   --accent:      #17506B;  /* deep ocean blue — italic accents & links
@@ -274,7 +273,7 @@ html.gate-locked body > *:not(#gate) { display: none; }
 /* --------------------------------------------------------------------------
    7. MY WORKS — the 3 project cards
    -------------------------------------------------------------------------- */
-.works { background: var(--white); padding: var(--section-pad) 0; }
+.works { background: var(--off-white); padding: var(--section-pad) 0; }
 
 .works-grid {
   display: grid;
@@ -289,7 +288,9 @@ html.gate-locked body > *:not(#gate) { display: none; }
   color: var(--navy);
   border-radius: 1.25rem;
   overflow: hidden;
-  background: var(--cream);
+  background: var(--white);
+  /* soft shadow lifts the white card off the off-white section */
+  box-shadow: 0 6px 20px rgba(27, 58, 75, 0.08);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -326,7 +327,7 @@ html.gate-locked body > *:not(#gate) { display: none; }
 /* --------------------------------------------------------------------------
    8. OTHER FUN THINGS
    -------------------------------------------------------------------------- */
-.fun { background: var(--yellow); padding: var(--section-pad) 0; }
+.fun { background: var(--orange-soft); padding: var(--section-pad) 0; }
 
 .fun-grid {
   display: grid;
