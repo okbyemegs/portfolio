@@ -64,7 +64,8 @@ var SPARKLE_LIFE    = 650;     // ms — how long each sparkle lives
   var style = document.createElement("style");
   style.textContent =
     SPARKLE_SCOPE + " { cursor: " + starCursor(STAR_SIZE, SILVER, "#5D6673") + ", auto; }\n" +
-    SPARKLE_SCOPE + " a, " + SPARKLE_SCOPE + " button { cursor: " +
+    SPARKLE_SCOPE + " a, " + SPARKLE_SCOPE + " button, " +
+    SPARKLE_SCOPE + " .zoomable { cursor: " +
     starCursor(Math.round(STAR_SIZE * 1.2), GOLD, "#7A5E30") + ", pointer; }";
   document.head.appendChild(style);
 
