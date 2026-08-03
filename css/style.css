@@ -386,6 +386,33 @@ html.gate-locked body > *:not(#gate) { display: none; }
    <span class="accent"> — it turns soft orange there so it stays readable */
 .fun-card .accent { color: var(--orange-soft); }
 
+/* A fun card can also be a link out to a live project — write it as
+   <a class="fun-card" href="..."> instead of <div class="fun-card"> */
+a.fun-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+a.fun-card:hover,
+a.fun-card:focus-visible {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(27, 58, 75, 0.25);
+  outline: none;
+}
+
+/* The little "Try it out ↗" line at the bottom of a linked card */
+.fun-card-link {
+  display: inline-block;
+  margin-top: 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--orange-soft);
+}
+
 /* --------------------------------------------------------------------------
    9. CONTACT
    -------------------------------------------------------------------------- */

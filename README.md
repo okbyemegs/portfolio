@@ -106,7 +106,7 @@ Placeholders and roughly the shape of image that fits best:
 |---|---|---|
 | `portrait-placeholder.svg` | Hero portrait | Portrait (4:5), e.g. 800×1000px |
 | `project-1/2/3-cover-placeholder.svg` | The 3 work cards | Landscape (4:3), e.g. 1200×900px |
-| `fun-*-placeholder.svg` | Other Fun Things cards | Landscape (16:10) |
+| `fun-gachapon.png`, `fun-*-placeholder.svg` | Other Fun Things cards | Landscape (16:10) |
 | `project-body-placeholder-wide.svg` | Wide case-study images | Landscape (16:9) |
 | `project-body-placeholder-narrow.svg` | Narrow case-study images | Portrait or square |
 
