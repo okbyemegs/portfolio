@@ -625,7 +625,11 @@ html.gate-locked body > *:not(#gate) { display: none; }
 .cs-image { margin: 0; }
 
 .cs-image img {
-  width: 100%;
+  /* Fills the column, but never stretches past the image file's real size —
+     a small image stays sharp and centres itself instead of going blurry. */
+  width: auto;
+  max-width: 100%;
+  margin: 0 auto;
   border-radius: 1.25rem;
   /* soft shadow + hairline edge so images sit on the page, not float */
   box-shadow: 0 8px 26px rgba(27, 58, 75, 0.10);
