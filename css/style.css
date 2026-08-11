@@ -584,6 +584,42 @@ a.fun-card:focus-visible {
 
 .cs-text h3 + p { margin-top: 0; }
 
+/* Phase / sub-section heading, for a findings section long enough to split
+   in two — <h3 class="cs-phase">. Sits between an <h2> and the points below. */
+.cs-text h3.cs-phase {
+  font-size: clamp(1.3rem, 2.6vw, 1.75rem);
+  color: var(--accent);
+  border-top: 2px solid var(--orange-soft);
+  padding-top: 1.2rem;
+  margin-top: 2.6em;
+}
+
+/* A single finding or recommendation: the bold lead-in above its paragraph */
+.cs-text h4 {
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  font-weight: 700;
+  margin-top: 1.7em;
+  margin-bottom: 0.35rem;
+}
+
+.cs-text h4 + p { margin-top: 0; }
+
+/* Emphasised statement panel — <p class="cs-callout">…</p>
+   Good for a "How might we…" framing or a headline takeaway. */
+.cs-callout {
+  max-width: 46em;
+  margin: 0 auto;
+  width: 100%;
+  background: var(--blue-light);
+  border-radius: 1.25rem;
+  padding: clamp(1.5rem, 4vw, 2.25rem) clamp(1.5rem, 4vw, 2.5rem);
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 2.5vw, 1.6rem);
+  line-height: 1.4;
+  color: var(--navy);
+}
+
 /* Slightly larger opening line — add class="cs-lead" to a <p> */
 .cs-lead {
   font-size: clamp(1.15rem, 2.2vw, 1.45rem);
