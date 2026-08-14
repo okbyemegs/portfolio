@@ -620,6 +620,83 @@ a.fun-card:focus-visible {
   color: var(--navy);
 }
 
+/* Small muted aside, e.g. "(theme names in progress)" */
+.cs-muted {
+  font-size: 0.9rem;
+  font-style: italic;
+  opacity: 0.7;
+}
+
+/* A row of headline figures — <ul class="cs-figures"> with
+   <li><b>958</b><span>what it counts</span></li> */
+.cs-figures {
+  list-style: none;
+  max-width: 42em;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0;
+}
+
+.cs-figures li {
+  display: flex;
+  gap: clamp(1rem, 3vw, 1.75rem);
+  align-items: baseline;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(27, 58, 75, 0.15);
+}
+
+.cs-figures b {
+  font-family: var(--font-heading);
+  font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--accent);
+  min-width: 3.5em;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* A data table. Wrap it so long tables scroll inside themselves on phones
+   instead of stretching the page:
+     <div class="cs-table-wrap"><table class="cs-table"> … </table></div>
+   Add class="is-key" to any <tr> you want to stand out. */
+.cs-table-wrap {
+  max-width: 42em;
+  margin: 0 auto;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.cs-table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 30rem;
+  font-size: 0.97rem;
+}
+
+.cs-table th,
+.cs-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.8rem 0.9rem;
+}
+
+.cs-table th {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  border-bottom: 1.5px solid var(--navy);
+}
+
+.cs-table td { border-bottom: 1px solid rgba(27, 58, 75, 0.15); }
+
+/* The rows that carry the finding */
+.cs-table tbody tr.is-key { background: var(--blue-light); }
+.cs-table tbody tr.is-key td { font-weight: 700; }
+
 /* Slightly larger opening line — add class="cs-lead" to a <p> */
 .cs-lead {
   font-size: clamp(1.15rem, 2.2vw, 1.45rem);
@@ -663,6 +740,9 @@ a.fun-card:focus-visible {
   line-height: 1.35;
   color: var(--accent);
 }
+
+/* A quieter version of the pull quote, for a short aside in your own voice */
+.cs-quote--small { font-size: clamp(1.1rem, 2.2vw, 1.4rem); }
 
 /* Headline number — <p class="cs-stat"><strong>35%</strong> the rest…</p> */
 .cs-stat {

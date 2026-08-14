@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- ✏️ EDIT: browser tab title for this project -->
-  <title>Project Title Two — Megan</title>
+  <title>Conversational AI Chatbot — Megan</title>
   <meta name="robots" content="noindex">
 
   <!-- Fonts: Fraunces (headings) + Karla (body) — free Google fonts,
@@ -36,26 +36,27 @@
       <a class="back-link" href="index.html">← Back to home</a>
 
       <!-- ✏️ EDIT: project title -->
-      <h1>Project Title <span class="accent">Two</span></h1>
+      <h1>Conversational AI <span class="accent">Chatbot</span></h1>
 
       <!-- ✏️ EDIT: one-line description of the project -->
       <p class="cs-tagline">
-        [PLACEHOLDER] One clear sentence about what this project was and the impact it had.
+        Testing whether a Gen AI chatbot could handle real banking questions —
+        before committing to build one.
       </p>
 
       <!-- ✏️ EDIT: the metadata row -->
       <dl class="cs-meta">
         <div>
           <dt>Role</dt>
-          <dd>[e.g. UX Researcher]</dd>
+          <dd>UX Researcher</dd>
         </div>
         <div>
           <dt>Duration</dt>
-          <dd>[e.g. 8 weeks, Jan–Mar 2026]</dd>
+          <dd>Sep 2025 – present · beta Nov 2026</dd>
         </div>
         <div>
           <dt>Type of Work</dt>
-          <dd>[e.g. End-to-end UX case study]</dd>
+          <dd>Competitor research, diary study, workshop facilitation</dd>
         </div>
       </dl>
     </div>
@@ -65,68 +66,280 @@
        CASE STUDY BODY — a flexible stack of blocks.
 
        ✏️ HOW TO EDIT THIS SECTION:
-       There are only two kinds of block. Copy, paste, delete, or reorder
-       them freely — the layout will not break.
+       Copy, paste, delete, or reorder these blocks freely — the layout
+       will not break. The building blocks are:
 
-       TEXT BLOCK:
+       TEXT BLOCK (can hold <p>, <h3>, <h4>, <ul>, and pull quotes):
          <div class="cs-text">
            <h2>Section heading</h2>
+           <h3 class="cs-phase">A sub-section heading</h3>
+           <h4>A single finding</h4>
            <p>Your paragraph…</p>
          </div>
 
-       Inside a text block you can also use <h3> sub-headings, <ul> lists,
-       <p class="cs-lead"> for a larger opening line,
-       <blockquote class="cs-quote"> for a pull quote, and
-       <p class="cs-stat"><strong>35%</strong> …</p> for a headline number.
+       EMPHASISED PANEL:  <p class="cs-callout">…</p>
+       PULL QUOTE:        <blockquote class="cs-quote">…</blockquote>
+       HEADLINE NUMBER:   <p class="cs-stat"><strong>4.76</strong> …</p>
+       FIGURE LIST:       <ul class="cs-figures"><li><b>958</b><span>…</span></li></ul>
+       TABLE:             <div class="cs-table-wrap"><table class="cs-table">…</table></div>
+                          (add class="is-key" to a <tr> to highlight it)
 
        IMAGE BLOCK (add class "cs-image--narrow" for a smaller image).
        Every image is click-to-zoom automatically:
          <figure class="cs-image">
-           <img src="images/your-image.jpg" alt="describe the image">
+           <img src="images/your-image.png" alt="describe the image">
            <figcaption>Optional caption</figcaption>
          </figure>
        ====================================================================== -->
   <article class="case-study container">
 
+    <!-- ============ 1. THE CHALLENGE ============ -->
     <div class="cs-text">
       <h2>The challenge</h2>
-      <p>[PLACEHOLDER] Set the scene: what was the problem, who was it a problem
-        for, and why did it matter? A couple of warm, clear paragraphs work best.</p>
-      <p>[PLACEHOLDER] Add as many paragraphs as you like inside a text block.</p>
+      <p>OCBC's chatbot ran on rules — keyword matching, fixed replies, a hard
+        ceiling on anything unusual. The question was whether a Gen AI model could
+        replace it, and eventually handle more: calculations, guidance, real
+        decisions.</p>
+      <p>But a chatbot that gets a restaurant wrong is annoying; one that gets a
+        customer's savings wrong is a different category of problem. In banking,
+        hallucination isn't a rough edge — it's a trust and compliance risk. So
+        before committing to build, the team needed a cheaper answer to a basic
+        question:</p>
     </div>
 
+    <!-- The question the whole project set out to answer -->
+    <p class="cs-callout">
+      What do customers actually ask, and can Gen AI handle it well enough to be
+      worth it?
+    </p>
+
     <figure class="cs-image">
-      <!-- ✏️ REPLACE IMAGE: e.g. images/project-1-research.jpg -->
-      <img src="images/project-body-placeholder-wide.svg" alt="[Describe this image for screen readers]">
-      <figcaption>[PLACEHOLDER] Optional caption — delete this line if you don't want one.</figcaption>
+      <!-- ✏️ REPLACE IMAGE: overwrite images/chatbot-hero.png -->
+      <img src="images/chatbot-hero.png" width="1600" height="900" loading="lazy" decoding="async" alt="Conversational AI chatbot concept cover">
     </figure>
 
+    <!-- ============ 2. RESEARCH & DISCOVERY — four workstreams ============ -->
     <div class="cs-text">
       <h2>Research &amp; discovery</h2>
-      <p>[PLACEHOLDER] What did you do to understand the problem? Interviews,
-        surveys, usability tests? What did you learn that surprised you?</p>
+      <p class="cs-lead">The work ran across four connected pieces, each building
+        on the last.</p>
+
+      <h3 class="cs-phase">Phase 1 competitor research (Sep 2025)</h3>
+      <p>Before designing anything, I mapped 30 competitors and parallel-world
+        inspirations — 4 local banks, 5 regional banks, 8 global banks, 8
+        payment/trading/lending/insurance apps, and 6 non-financial products. The
+        goal was to understand common design patterns (entry points, search bars,
+        conversational UIs) and standout ones, and see where AI-powered search could
+        realistically add value in a banking context.</p>
+
+      <h3 class="cs-phase">Diary study, 13 participants (Nov 2025 – Jan 2026)</h3>
+      <p>A single session tells you what someone thinks of a chatbot. A week tells
+        you whether they keep using it. We ran a diary study — but rather than build
+        anything, we used ChatGPT as a proxy, prompted with guardrails and scope to
+        stand in for an OCBC chatbot. Participants got realistic financial context
+        via synthetic profiles — real customer profiles I cleaned and masked
+        (products and figures adjusted to remove any personally identifiable
+        information, behavioural shape preserved). The week ran on daily tasks,
+        pulse surveys on Days 3 and 7, and exit interviews.</p>
+      <p>My contribution here was the study operations end-to-end — masking
+        profiles, participant setup, daily tasks, survey and interview design — and
+        co-writing the research report with one other team member. The report was
+        the biggest piece: turning 958 prompts and a week of diary entries into
+        something product, marketing, and the contact centre could act on.</p>
+
+      <h3 class="cs-phase">Workshop with product managers and owners</h3>
+      <p>Research findings only matter if they get built. To bridge that gap, we
+        ran a workshop with product managers and product owners, walking them through
+        the intents customers had surfaced — from the diary study and from real
+        questions logged against the current Dotcom chatbot. They drafted answers in
+        their own product voice, seeding the knowledge repository the eventual Gen AI
+        model would draw from.</p>
+
+      <h3 class="cs-phase">Phase 2 competitor research (Jul 2026 – present)</h3>
+      <p>A second, deeper round of 38 competitors — this time focused on design
+        patterns rather than viability. Where does the entry point live? Header icon,
+        sticky bubble, persistent search bar? How do the best examples handle
+        escalation, personalisation, and trust? Still in progress, and actively
+        informing (though not yet confirming) the screens for the build now
+        underway.</p>
+    </div>
+
+    <!-- ============ 3. WHAT WE FOUND ============ -->
+    <div class="cs-text">
+      <h2>What we found</h2>
+
+      <h4>1. Expectations were low, then flipped — and kept moving.</h4>
+      <p>Participants arrived expecting what they'd seen before: keyword replies,
+        canned redirects, a link to a help page. That's what "bank chatbot" meant to
+        them.</p>
+    </div>
+
+    <p class="cs-stat">
+      <strong>4.76</strong>
+      out of 5 on first impression
+    </p>
+
+    <div class="cs-text">
+      <p>But the scores dipped as the week went on. Ease and naturalness went from
+        4.5 on Day 3 to 4.15 by Day 6. Helpfulness went from 4.3 to 4.08. Small
+        drops, but consistent — as novelty wore off, people started judging it on
+        whether it was actually useful, and the bar moved.</p>
+      <p>A single session would have caught the 4.76 and missed the dip entirely.
+        It's the clearest argument I have for why the study needed to run across a
+        week.</p>
+      <p><strong>Over the seven days:</strong></p>
+    </div>
+
+    <!-- Headline figures from the diary study -->
+    <ul class="cs-figures">
+      <li><b>958</b><span>total prompts (713 daily task, 245 weekly task)</span></li>
+      <li><b>7.5</b><span>minutes average daily engagement</span></li>
+      <li><b>10</b><span>consideration events</span></li>
+      <li><b>5</b><span>product conversions — credit cards, precious metals, housing loan, unit trust</span></li>
+    </ul>
+
+    <blockquote class="cs-quote cs-quote--small">
+      That last row is the one I'd point at. Five people moved from asking questions
+      to choosing a product, inside a week, talking to a proxy.
+    </blockquote>
+
+    <div class="cs-text">
+      <h4>2. People weren't asking for support. They were asking for help deciding.</h4>
+      <p>We mapped 72 topics across six journey stages, and the distribution was
+        the surprise.</p>
+    </div>
+
+    <!-- Topics by journey stage — the two heavy stages are highlighted -->
+    <div class="cs-table-wrap">
+      <table class="cs-table">
+        <thead>
+          <tr>
+            <th>Stage</th>
+            <th>Topics</th>
+            <th>What they were asking</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Aware</td>
+            <td>17</td>
+            <td>"What is this?" — broad discovery</td>
+          </tr>
+          <tr class="is-key">
+            <td>Consider</td>
+            <td>22</td>
+            <td>Evaluating options, trade-offs, eligibility</td>
+          </tr>
+          <tr>
+            <td>Decide/Apply</td>
+            <td>3</td>
+            <td>Requirements, thresholds, "will I qualify?"</td>
+          </tr>
+          <tr class="is-key">
+            <td>Use/Optimise</td>
+            <td>16</td>
+            <td>Getting more out of a product they already hold</td>
+          </tr>
+          <tr>
+            <td>Maintain/Support</td>
+            <td>9</td>
+            <td>Upkeep, fees, statements</td>
+          </tr>
+          <tr>
+            <td>Expand/Explore</td>
+            <td>5</td>
+            <td>Adding new products</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="cs-text">
+      <p>Consider and Use/Optimise held more than half the topics between them.
+        People weren't using it as a help desk — they were using it to think. And
+        Decide/Apply being nearly empty suggests that once they felt informed, they
+        moved fast.</p>
+      <p>That reframes what the chatbot is for. Less FAQ, more thinking partner.</p>
     </div>
 
     <figure class="cs-image cs-image--narrow">
-      <!-- ✏️ REPLACE IMAGE: a narrower image, e.g. a mobile screen -->
-      <img src="images/project-body-placeholder-narrow.svg" alt="[Describe this image for screen readers]">
-      <figcaption>[PLACEHOLDER] A narrower image block — nice for mobile screens.</figcaption>
+      <!-- ✏️ REPLACE IMAGE: overwrite images/chatbot-topics.png -->
+      <img src="images/chatbot-topics.png" width="900" height="1200" loading="lazy" decoding="async" alt="Chart of 72 topics distributed across six journey stages">
     </figure>
 
     <div class="cs-text">
-      <h2>The solution</h2>
-      <p>[PLACEHOLDER] Walk through what you designed and the key decisions
-        behind it. Pair this with image blocks above and below.</p>
+      <h4>3. Three themes for what it has to get right
+        <span class="cs-muted">(theme names in progress)</span></h4>
+      <p><strong>Conversational intelligence.</strong> People want a guided way in
+        but the freedom to go deeper on their own terms. There's an opening to move
+        from answering questions to surfacing things before they're asked. And
+        different questions need different formats — some answers want a table, some
+        want a chart, some want a sentence.</p>
+      <p><strong>Decision enablement.</strong> Trust is the whole game. Outdated
+        information broke confidence quickly, and once broken it didn't recover
+        within the session. Embedded actions helped people move from reading to
+        doing, but final decisions wanted a human hand-off.</p>
+      <p><strong>Ecosystem positioning.</strong> Positioned as an optimisation tool
+        rather than a search box, the chatbot keeps customers comparing and deciding
+        inside OCBC — rather than leaving to research elsewhere.</p>
     </div>
 
     <figure class="cs-image">
-      <img src="images/project-body-placeholder-wide.svg" alt="[Describe this image for screen readers]">
+      <!-- ✏️ REPLACE IMAGE: overwrite images/chatbot-themes.png -->
+      <img src="images/chatbot-themes.png" width="1600" height="900" loading="lazy" decoding="async" alt="The three-theme framework for what the chatbot has to get right">
     </figure>
 
+    <!-- ============ 4. THE SOLUTION ============ -->
+    <div class="cs-text">
+      <h2>The solution</h2>
+      <p>The findings and the workshop together produced the foundation the actual
+        build needs.</p>
+
+      <h4>A validated intent library.</h4>
+      <p>72 topics across six journey stages, each grounded in real customer
+        language.</p>
+
+      <h4>A knowledge repository seeded by the people who own the products.</h4>
+      <p>The workshop paired diary-study intents (and real Dotcom chatbot logs)
+        with answers from product managers and owners across Core banking,
+        Discovery, Contact Centre, and Wealth Management. That repository is what the
+        Gen AI model will draw from.</p>
+
+      <h4>Design direction from the second competitor round.</h4>
+      <p>38 competitors examining how the best in the market handle entry points,
+        search patterns, escalation, and trust cues. In progress, and informing the
+        screens being drafted now.</p>
+    </div>
+
+    <p class="cs-callout">
+      Phase 1 beta is scheduled for November 2026.
+    </p>
+
+    <figure class="cs-image">
+      <!-- ✏️ REPLACE IMAGE: overwrite images/chatbot-competitors.png -->
+      <img src="images/chatbot-competitors.png" width="1600" height="900" loading="lazy" decoding="async" alt="Competitor analysis of chatbot entry points and search patterns">
+    </figure>
+
+    <!-- ============ 5. OUTCOME & REFLECTIONS ============ -->
     <div class="cs-text">
       <h2>Outcome &amp; reflections</h2>
-      <p>[PLACEHOLDER] What happened as a result? What would you do differently?
-        Recruiters love an honest reflection.</p>
+    </div>
+
+    <p class="cs-stat">
+      <strong>5</strong>
+      product conversions from 13 participants, in a single week
+    </p>
+
+    <div class="cs-text">
+      <p>The proxy drove 5 product conversions from 13 participants in a single
+        week — credit cards, precious metals, a housing loan, a unit trust — and gave
+        the team enough confidence to commit to the build. Research is now embedded
+        end-to-end: intents, answers, design patterns.</p>
+      <p>What I'd change: participant onboarding added friction right where I
+        wanted natural behaviour, costing us cleaner Day 1 data. And I'd vary the
+        synthetic profiles more deliberately — because each person's questions were
+        shaped by their profile, some product areas came up a lot and others barely
+        at all. Designing that spread up front would have given better coverage.</p>
     </div>
 
   </article>
