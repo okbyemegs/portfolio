@@ -372,24 +372,47 @@ html.gate-locked body > *:not(#gate) { display: none; }
   overflow: hidden;
 }
 
+/* SQUARE image area. These four images are a mix of orientations — two tall
+   phone screenshots, a portrait photo of Mieko and a portrait photo of
+   cookies — and a square is the shape that treats all of them least badly.
+   A wide box used to slice tall screenshots down to a thin middle strip.
+   Each image then picks its own anchor point with a crop- class below. */
 .fun-card img {
   width: 100%;
-  /* short and wide, so a card is mostly text rather than mostly picture */
-  aspect-ratio: 2.4 / 1;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
+  object-position: center;   /* the default when no crop- class is set */
 }
 
-/* Anchor a crop to the top of the image when the top is the important part
-   (e.g. a screenshot whose header would otherwise be cut off) */
-.crop-top { object-position: top; }
+/* ------------------------------------------------------------------------
+   CROP ANCHORS — which part of an image to keep when it has to be trimmed.
+   Add one of these to an <img> as class="crop-top" etc.
 
-/* Same idea, but a little softer: shows the upper part of the image without
-   pinning right to the very edge. Handy for tall phone screenshots.
+   These are written as `img.crop-top` rather than plain `.crop-top` on
+   purpose. CSS gives a rule more weight the more specific it is, and
+   `.fun-card img` above is more specific than a lone class would be — so a
+   plain `.crop-top` would quietly lose the argument and every image would
+   stay centred. Naming the element here makes it win. Keep the `img.` bit.
+   ------------------------------------------------------------------------ */
+
+/* Keep the TOP of the image. For screenshots whose header, title bar or
+   navigation would otherwise be sliced off. */
+img.crop-top { object-position: top; }
+
+/* Keep the upper-middle: shows the top of the image without pinning right
+   to the very edge.
    ✏️ Lower the percentage to show more of the top, raise it to show more
       of the middle (0% = very top, 50% = dead centre) */
-.crop-upper { object-position: center 16%; }
+img.crop-upper { object-position: center 16%; }
 
-.fun-card-text { padding: 1rem 1.15rem 1.2rem; }
+/* Keep a face in frame on a tall photo — sits just above dead centre so a
+   head near the top of the picture doesn't get trimmed.
+   ✏️ Same idea as above: lower shows more of the top. */
+img.crop-face { object-position: center 38%; }
+
+/* Square images make the cards taller, so the text block is kept tight to
+   keep all four cards within about two screens. */
+.fun-card-text { padding: 0.85rem 1.05rem 1rem; }
 
 .fun-card h3 { font-size: 1.15rem; margin-bottom: 0.3rem; color: var(--white); }
 
@@ -1117,7 +1140,10 @@ a.fun-card:focus-visible {
 @media (max-width: 900px) {
   .works-grid { grid-template-columns: 1fr; max-width: 30rem; margin: 0 auto; }
   .food-grid { grid-template-columns: repeat(2, 1fr); }   /* tablet */
-  .fun-card img { aspect-ratio: 2 / 1; }                  /* keep cards short */
+  /* NOTE: the fun cards deliberately keep their 1:1 square image here.
+     A short, wide box used to be forced on narrow screens, but that sliced
+     the tall screenshots down to an unreadable strip — the crop matters
+     more than the extra height. */
   .hero .container { grid-template-columns: 1fr; }
   .hero-portrait { max-width: 24rem; }
 }

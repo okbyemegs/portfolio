@@ -186,11 +186,9 @@
           <!-- ITEM 2 — Gachapon -->
           <a class="fun-card" href="https://gachaponvcproj1.netlify.app/" target="_blank" rel="noopener">
             <!-- ✏️ REPLACE IMAGE: overwrite images/fun-gachapon.jpg
-                 This is a tall phone screenshot in a short, wide slot, so
-                 "crop-upper" pulls the visible window up to the capsule
-                 machine. ✏️ To nudge what's shown, change the percentage in
-                 .crop-upper in css/style.css (0% = very top, 50% = middle) -->
-            <img class="crop-upper" src="images/fun-gachapon.jpg" width="794" height="1290" loading="lazy" alt="Screenshot of the gachapon gift website">
+                 A tall phone screenshot, so "crop-top" keeps the ガチャポン
+                 sign and the capsules in frame (see .crop-top in style.css) -->
+            <img class="crop-top" src="images/fun-gachapon.jpg" width="794" height="1290" loading="lazy" alt="Screenshot of the gachapon gift website">
             <div class="fun-card-text">
               <h3>Vibe coding project #2: Gachapon 💻</h3>
               <p>A little gachapon machine I built as a gift for my partner — give the
@@ -201,8 +199,9 @@
 
           <!-- ITEM 3 — Mieko -->
           <div class="fun-card">
-            <!-- ✏️ REPLACE IMAGE: overwrite images/fun-mieko.jpg -->
-            <img src="images/fun-mieko.jpg" width="1050" height="1400" loading="lazy" alt="Mieko the Shiba Inu">
+            <!-- ✏️ REPLACE IMAGE: overwrite images/fun-mieko.jpg
+                 "crop-face" keeps her face in frame on this tall photo -->
+            <img class="crop-face" src="images/fun-mieko.jpg" width="1050" height="1400" loading="lazy" alt="Mieko the Shiba Inu">
             <div class="fun-card-text">
               <h3>Mieko the Shiba 🐕</h3>
               <p>Chief treats officer, professional napper, occasional yapper.</p>
@@ -211,7 +210,8 @@
 
           <!-- ITEM 4 — Food adventures. Links to the gallery page food.html -->
           <a class="fun-card" href="food.html">
-            <!-- ✏️ REPLACE IMAGE: overwrite images/fun-food.jpg -->
+            <!-- ✏️ REPLACE IMAGE: overwrite images/fun-food.jpg
+                 No crop- class: the cookies fill the frame, so centre is fine -->
             <img src="images/fun-food.jpg" width="1050" height="1400" loading="lazy" alt="Something I cooked or baked">
             <div class="fun-card-text">
               <h3>Food adventures 🍜</h3>
