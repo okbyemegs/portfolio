@@ -119,7 +119,7 @@ Placeholders and roughly the shape of image that fits best:
 |---|---|---|
 | `portrait.jpg` | Hero portrait | Portrait (4:5), e.g. 800×1000px |
 | `frank-card.jpg` | Work card 1 (FRANK) | Landscape (4:3), e.g. 1200×900px |
-| `chatbot-card.png` | Work card 2 (Chatbot) | Landscape (4:3) |
+| `chatbot-card.jpg` | Work card 2 (Chatbot) | Landscape (4:3) |
 | `bundling-card.jpg` | Work card 3 (Soft Bundling) | Landscape (4:3) |
 | `fun-photobooth.jpg`, `fun-gachapon.jpg`, `fun-mieko.jpg`, `fun-food.jpg` | Other Fun Things cards | Short and wide (about 2.4:1) |
 | `food-1.jpg` … `food-8.jpg`, `food-9.png`, `food-10.png` | Food adventures gallery (`food.html`) | Square works best |
