@@ -20,7 +20,8 @@ all the project pages.
 > tell-tale sign the folders aren't alongside it. Nothing is broken; just open
 > it from inside the full folder.
 
-> 💡 The default password is **`mieko`** — see "Changing the password" below.
+> 💡 The default password is **`mieko`** (capitals and spaces don't matter, so
+> `Mieko` works too) — see "Changing the password" below.
 
 If you ever want a "proper" local preview (identical to how a host serves it),
 and you have a Mac, you can also run this in Terminal from the project folder:
@@ -166,6 +167,11 @@ var SITE_PASSWORD = "mieko";
 
 Change `mieko` to anything you like (keep the quotes). Visitors stay unlocked
 for their current browser tab only.
+
+**Capital letters and spaces don't matter.** `Mieko`, `mieko` and `  Mieko  `
+all get in. Phone keyboards love to capitalise the first letter for you, and a
+name looks like it wants a capital anyway, so the gate ignores both rather
+than turning someone away over it.
 
 ### ⚠️ Why this is NOT real security
 
