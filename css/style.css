@@ -214,9 +214,10 @@ html.gate-locked body > *:not(#gate) { display: none; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 241, 193, 0.92);  /* translucent soft cream */
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  /* Fully opaque: the nav sits over the page as you scroll, so any
+     transparency lets content show through and read as an overlap. */
+  background: var(--cream);
+  border-bottom: 1px solid rgba(27, 58, 75, 0.08);
 }
 
 .site-nav .container {
@@ -250,8 +251,8 @@ html.gate-locked body > *:not(#gate) { display: none; }
 
 .nav-links a:hover { border-bottom-color: var(--navy); }
 
-/* Project pages get an off-white nav to match their body */
-.site-nav--cream { background: rgba(250, 247, 240, 0.9); }
+/* Project pages and the gallery get an off-white nav to match their body */
+.site-nav--cream { background: var(--off-white); }
 
 /* --------------------------------------------------------------------------
    5. HERO
