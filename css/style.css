@@ -999,6 +999,15 @@ a.fun-card:focus-visible {
   width: 100%;
 }
 
+/* For a tall phone screenshot — add class "cs-image--portrait" to the
+   <figure>. Keeps it roughly phone-width and centred, so it sits in the
+   reading column instead of towering over it. Still click-to-zoom. */
+.cs-image--portrait {
+  max-width: 20rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
 /* The main "back to all works" exit at the end of a case study */
 .cs-footer {
   text-align: center;
