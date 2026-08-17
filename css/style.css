@@ -357,12 +357,13 @@ html.gate-locked body > *:not(#gate) { display: none; }
 /* --------------------------------------------------------------------------
    8. OTHER FUN THINGS
    -------------------------------------------------------------------------- */
-.fun { background: var(--yellow); padding: var(--section-pad) 0; }
+/* Tighter than the other sections, so all four cards read as one grid */
+.fun { background: var(--yellow); padding: clamp(2.75rem, 6vw, 4.25rem) 0; }
 
 .fun-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: clamp(1.25rem, 3vw, 2rem);
+  gap: clamp(1rem, 2vw, 1.5rem);
 }
 
 .fun-card {
@@ -373,15 +374,20 @@ html.gate-locked body > *:not(#gate) { display: none; }
 
 .fun-card img {
   width: 100%;
-  aspect-ratio: 16 / 10;
+  /* short and wide, so a card is mostly text rather than mostly picture */
+  aspect-ratio: 2.4 / 1;
   object-fit: cover;
 }
 
-.fun-card-text { padding: 1.4rem 1.5rem 1.6rem; }
+/* Anchor a crop to the top of the image when the top is the important part
+   (e.g. a screenshot whose header would otherwise be cut off) */
+.crop-top { object-position: top; }
 
-.fun-card h3 { font-size: 1.35rem; margin-bottom: 0.4rem; color: var(--white); }
+.fun-card-text { padding: 1rem 1.15rem 1.2rem; }
 
-.fun-card p { font-size: 0.98rem; opacity: 0.9; color: var(--white); }
+.fun-card h3 { font-size: 1.15rem; margin-bottom: 0.3rem; color: var(--white); }
+
+.fun-card p { font-size: 0.92rem; line-height: 1.55; opacity: 0.9; color: var(--white); }
 
 /* If you want to highlight a word inside a navy fun card, wrap it in
    <span class="accent"> — it turns soft orange there so it stays readable */
@@ -406,8 +412,8 @@ a.fun-card:focus-visible {
 /* The little "Try it out ↗" line at the bottom of a linked card */
 .fun-card-link {
   display: inline-block;
-  margin-top: 0.9rem;
-  font-size: 0.85rem;
+  margin-top: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1050,8 +1056,12 @@ a.fun-card:focus-visible {
    PHOTO GALLERY (food.html) — a light, personal page, not a case study
    -------------------------------------------------------------------------- */
 /* A warmer header, so the gallery feels like part of "Life outside the
-   Figma file" rather than another project page */
-.cs-header--warm { background: var(--yellow); }
+   Figma file" rather than another project page. Shorter than a case-study
+   header too, since there is no metadata row under it. */
+.cs-header--warm {
+  background: var(--yellow);
+  padding: clamp(2rem, 5vw, 3.25rem) 0 clamp(1.75rem, 4vw, 2.5rem);
+}
 
 .gallery-intro {
   padding-top: clamp(3rem, 7vw, 4.5rem);
@@ -1067,9 +1077,10 @@ a.fun-card:focus-visible {
    photo is portrait or landscape — the lightbox shows the full image. */
 .food-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(1.25rem, 3vw, 2.25rem);
-  padding: clamp(2rem, 5vw, 3.5rem) 0 var(--section-pad);
+  /* 4 across gives two clean rows for eight photos */
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
+  padding: clamp(1.5rem, 3vw, 2.25rem) 0 clamp(3rem, 7vw, 5rem);
 }
 
 .food-grid figure { margin: 0; }
@@ -1089,6 +1100,7 @@ a.fun-card:focus-visible {
 @media (max-width: 900px) {
   .works-grid { grid-template-columns: 1fr; max-width: 30rem; margin: 0 auto; }
   .food-grid { grid-template-columns: repeat(2, 1fr); }   /* tablet */
+  .fun-card img { aspect-ratio: 2 / 1; }                  /* keep cards short */
   .hero .container { grid-template-columns: 1fr; }
   .hero-portrait { max-width: 24rem; }
 }
