@@ -795,6 +795,103 @@ a.fun-card:focus-visible {
 }
 
 /* --------------------------------------------------------------------------
+   CAROUSEL — for a set of slides in one image block (js/carousel.js)
+   Add `data-carousel` to a <figure class="cs-image"> holding several <img>s.
+   -------------------------------------------------------------------------- */
+.carousel-viewport {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  /* fixed box, so the page never jumps as slides change */
+  aspect-ratio: 16 / 9;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(27, 58, 75, 0.08);
+  box-shadow: 0 8px 26px rgba(27, 58, 75, 0.10);
+  background: var(--white);
+  scrollbar-width: none;          /* Firefox */
+  -ms-overflow-style: none;       /* old Edge */
+}
+
+.carousel-viewport::-webkit-scrollbar { display: none; }
+
+.carousel-viewport:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Each slide fills the box and letterboxes rather than cropping */
+.carousel-viewport img {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  scroll-snap-align: center;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: var(--white);
+}
+
+/* the hover lift belongs to the whole box, not the individual slide */
+.carousel-viewport img.zoomable:hover,
+.carousel-viewport img.zoomable:focus-visible { transform: none; box-shadow: none; }
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 0.9rem;
+}
+
+.carousel-btn {
+  width: 2.4rem;
+  height: 2.4rem;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--navy);
+  background: transparent;
+  border: 1.5px solid var(--navy);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.carousel-btn:hover:not(:disabled) { background: var(--navy); color: var(--off-white); }
+.carousel-btn:disabled { opacity: 0.3; cursor: default; }
+
+.carousel-dots { display: flex; align-items: center; gap: 0.5rem; }
+
+.carousel-dot {
+  width: 0.62rem;
+  height: 0.62rem;
+  padding: 0;
+  background: transparent;
+  border: 1.5px solid var(--navy);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.carousel-dot[aria-current="true"] { background: var(--navy); }
+
+.carousel-btn:focus-visible,
+.carousel-dot:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.carousel-count {
+  font-size: 0.85rem;
+  opacity: 0.75;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --------------------------------------------------------------------------
    LIGHTBOX — the full-size image overlay (js/lightbox.js)
    -------------------------------------------------------------------------- */
 #lightbox {
