@@ -12,6 +12,14 @@ The simplest way: **double-click `index.html`** and it opens in your browser.
 That's it — the whole site works this way, including the password gate and
 all the project pages.
 
+> ⚠️ **Keep the folders together.** `index.html` needs `css/`, `js/`,
+> `images/` and `fonts/` sitting right next to it. If you move or download
+> `index.html` on its own, the page loads with no styling at all — plain
+> black-on-white text, blue underlined links, broken images, and the password
+> box sitting as a lump at the top instead of covering the screen. That's the
+> tell-tale sign the folders aren't alongside it. Nothing is broken; just open
+> it from inside the full folder.
+
 > 💡 The default password is **`mieko`** — see "Changing the password" below.
 
 If you ever want a "proper" local preview (identical to how a host serves it),
@@ -28,7 +36,11 @@ and you have a Mac, you can also run this in Terminal from the project folder:
 | `index.html` | The landing page — hero, About Me, My Works, Other Fun Things, Contact |
 | `project-1.html` / `project-2.html` / `project-3.html` | One case-study page per project |
 | `css/style.css` | ALL the colours, fonts, and spacing, in one place |
+| `food.html` | The Food adventures photo gallery |
 | `js/main.js` | The password gate (the password is set at the top of this file) |
+| `js/lightbox.js` | Click any image to see it full size; browses photo sets |
+| `js/carousel.js` | Turns an image block with several images into a carousel |
+| `js/tickle.js`, `js/sparkle.js` | The hero jiggle and the star cursor |
 | `fonts/` | The two typefaces (Fraunces & Karla), self-hosted so the site works offline |
 | `images/` | Every image on the site. Placeholders are clearly labelled |
 | `README.md` | This guide |
@@ -184,10 +196,12 @@ to the browser. The good news: hosts offer this as a tick-box feature.
 
 (Pricing changes — double-check each host's current plans.)
 
-The gate only appears on the landing page (`index.html`) — the front door of
-the site. Once you have real protection turned on, you can remove it entirely
-if you like: delete the `<div id="gate">…</div>` block and the small
-`<script>` in the `<head>` of `index.html`.
+The gate appears on every page, so a direct link to a project page can't slip
+past it. Because it remembers you for the browser tab, you only type the
+password once — moving between pages after that never asks again. Once you
+have real protection turned on, you can remove it entirely if you like:
+delete the `<div id="gate">…</div>` block and the small `<script>` in the
+`<head>` of each HTML file.
 
 ---
 
