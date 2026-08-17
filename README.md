@@ -108,7 +108,8 @@ Placeholders and roughly the shape of image that fits best:
 | `frank-card.png` | Work card 1 (FRANK) | Landscape (4:3), e.g. 1200×900px |
 | `chatbot-card.png` | Work card 2 (Chatbot) | Landscape (4:3) |
 | `bundling-card.png` | Work card 3 (Soft Bundling) | Landscape (4:3) |
-| `fun-gachapon.png`, `fun-*-placeholder.svg` | Other Fun Things cards | Landscape (16:10) |
+| `fun-photobooth.png`, `fun-gachapon.png`, `fun-mieko.png`, `fun-food.png` | Other Fun Things cards | Landscape (16:10) |
+| `food-1.png` … `food-10.png` | Food adventures gallery (`food.html`) | Square works best |
 | `frank-*.png` | Inside the FRANK case study | Wide, or tall for mobile shots |
 | `chatbot-*.png` | Inside the Chatbot case study | Wide, `chatbot-topics.png` is tall |
 | `bundling-*.png` | Inside the Soft Bundling case study | Wide (16:9) |

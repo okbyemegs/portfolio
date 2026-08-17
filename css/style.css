@@ -941,6 +941,43 @@ a.fun-card:focus-visible {
 .lightbox-bar a:hover,
 .lightbox-bar button:hover { background: rgba(255, 204, 128, 0.22); }
 
+.lightbox-count {
+  font-size: 0.9rem;
+  color: var(--cream);
+  opacity: 0.85;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Previous / next arrows, shown only when browsing a set */
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.9rem;
+  height: 2.9rem;
+  display: grid;
+  place-items: center;
+  font: inherit;
+  font-size: 1.1rem;
+  color: var(--cream);
+  background: rgba(18, 41, 58, 0.6);
+  border: 1.5px solid var(--orange-soft);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.lightbox-nav:hover { background: rgba(255, 204, 128, 0.28); }
+.lightbox-nav[hidden] { display: none; }
+.lightbox-nav.is-prev { left: clamp(0.5rem, 2vw, 1.5rem); }
+.lightbox-nav.is-next { right: clamp(0.5rem, 2vw, 1.5rem); }
+
+.lightbox-bar a:focus-visible,
+.lightbox-bar button:focus-visible,
+.lightbox-nav:focus-visible {
+  outline: 2px solid var(--orange-soft);
+  outline-offset: 3px;
+}
+
 /* caption repeated under the enlarged image */
 .lightbox-caption {
   position: absolute;
@@ -1000,16 +1037,55 @@ a.fun-card:focus-visible {
 .cs-pagenav .is-next { margin-left: auto; text-align: right; }
 
 /* --------------------------------------------------------------------------
+   PHOTO GALLERY (food.html) — a light, personal page, not a case study
+   -------------------------------------------------------------------------- */
+/* A warmer header, so the gallery feels like part of "Life outside the
+   Figma file" rather than another project page */
+.cs-header--warm { background: var(--yellow); }
+
+.gallery-intro {
+  padding-top: clamp(3rem, 7vw, 4.5rem);
+}
+
+.gallery-intro p {
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  max-width: 34em;
+}
+
+/* 3 columns on desktop, 2 on tablet, 1 on phones (see the media queries
+   at the bottom of this file). Square tiles keep the grid tidy whether a
+   photo is portrait or landscape — the lightbox shows the full image. */
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.25rem, 3vw, 2.25rem);
+  padding: clamp(2rem, 5vw, 3.5rem) 0 var(--section-pad);
+}
+
+.food-grid figure { margin: 0; }
+
+.food-grid img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;              /* tidy tiles; nothing is cropped in the lightbox */
+  border-radius: 1.25rem;
+  border: 1px solid rgba(27, 58, 75, 0.08);
+  box-shadow: 0 8px 26px rgba(27, 58, 75, 0.10);
+}
+
+/* --------------------------------------------------------------------------
    12. RESPONSIVE — tablets & phones
    -------------------------------------------------------------------------- */
 @media (max-width: 900px) {
   .works-grid { grid-template-columns: 1fr; max-width: 30rem; margin: 0 auto; }
+  .food-grid { grid-template-columns: repeat(2, 1fr); }   /* tablet */
   .hero .container { grid-template-columns: 1fr; }
   .hero-portrait { max-width: 24rem; }
 }
 
 @media (max-width: 640px) {
   .fun-grid { grid-template-columns: 1fr; }
+  .food-grid { grid-template-columns: 1fr; }              /* phone */
   .cs-meta { flex-direction: column; gap: 1.25rem; }
   .gate-form { flex-direction: column; }
   .contact-links a { margin: 0.3rem 0.2rem; }

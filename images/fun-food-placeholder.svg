@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
-  <rect width="800" height="500" fill="#dceef7"/>
-  <rect x="14" y="14" width="772" height="472" fill="none" stroke="#1B3A4B" stroke-width="2" stroke-dasharray="10 8" rx="16"/>
-  <text x="50%" y="46%" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="30" fill="#1B3A4B">Placeholder image</text>
-  <text x="50%" y="56%" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" fill="#1B3A4B">Replace with: a food photo</text>
-</svg>
