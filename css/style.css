@@ -383,6 +383,12 @@ html.gate-locked body > *:not(#gate) { display: none; }
    (e.g. a screenshot whose header would otherwise be cut off) */
 .crop-top { object-position: top; }
 
+/* Same idea, but a little softer: shows the upper part of the image without
+   pinning right to the very edge. Handy for tall phone screenshots.
+   ✏️ Lower the percentage to show more of the top, raise it to show more
+      of the middle (0% = very top, 50% = dead centre) */
+.crop-upper { object-position: center 16%; }
+
 .fun-card-text { padding: 1rem 1.15rem 1.2rem; }
 
 .fun-card h3 { font-size: 1.15rem; margin-bottom: 0.3rem; color: var(--white); }

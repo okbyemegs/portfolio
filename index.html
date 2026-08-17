@@ -140,8 +140,8 @@
 
           <!-- CARD 3 — ✏️ edit title & description; replace the image -->
           <a class="work-card" href="project-3.html">
-            <!-- ✏️ REPLACE IMAGE: overwrite images/bundling-card.png -->
-            <img src="images/bundling-card.png" width="1200" height="900" loading="lazy" alt="Soft Bundling cover image">
+            <!-- ✏️ REPLACE IMAGE: overwrite images/bundling-card.jpg -->
+            <img src="images/bundling-card.jpg" width="682" height="698" loading="lazy" alt="Soft Bundling cover image">
             <div class="work-card-text">
               <h3>Soft Bundling — A Unified Onboarding Journey</h3>
               <p>Two phases of research to help new and existing OCBC customers apply for multiple products in a single, seamless journey.</p>
@@ -184,8 +184,12 @@
 
           <!-- ITEM 2 — Gachapon -->
           <a class="fun-card" href="https://gachaponvcproj1.netlify.app/" target="_blank" rel="noopener">
-            <!-- ✏️ REPLACE IMAGE: overwrite images/fun-gachapon.png -->
-            <img src="images/fun-gachapon.png" width="1200" height="750" loading="lazy" alt="Screenshot of the gachapon gift website">
+            <!-- ✏️ REPLACE IMAGE: overwrite images/fun-gachapon.jpg
+                 This is a tall phone screenshot in a short, wide slot, so
+                 "crop-upper" pulls the visible window up to the capsule
+                 machine. ✏️ To nudge what's shown, change the percentage in
+                 .crop-upper in css/style.css (0% = very top, 50% = middle) -->
+            <img class="crop-upper" src="images/fun-gachapon.jpg" width="794" height="1290" loading="lazy" alt="Screenshot of the gachapon gift website">
             <div class="fun-card-text">
               <h3>Vibe coding project #2: Gachapon 💻</h3>
               <p>A little gachapon machine I built as a gift for my partner — give the
