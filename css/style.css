@@ -542,15 +542,21 @@ a.fun-card:focus-visible {
 }
 
 /* The metadata row: Role / Duration / Type of work */
+/* The Role / Duration / Type of Work row under each project title.
+   This is a GRID rather than a flex row on purpose: a flex row sizes each
+   column to its text, so one long entry (like a list of research methods)
+   used to shove the last column onto a second line. A grid keeps all three
+   side by side and wraps the long text inside its own column instead.
+   ✏️ The "11rem" is the narrowest a column is allowed to get before the
+      row stacks — raise it to stack sooner, lower it to stack later. */
 .cs-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: clamp(1.5rem, 5vw, 4rem);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  column-gap: clamp(1.5rem, 3vw, 3rem);
+  row-gap: 1.5rem;                     /* only used if the row does stack */
   border-top: 1.5px solid var(--navy);
   padding-top: 1.5rem;
 }
-
-.cs-meta div { min-width: 10rem; }
 
 .cs-meta dt {
   font-size: 0.75rem;
@@ -1069,6 +1075,11 @@ a.fun-card:focus-visible {
   padding: clamp(2rem, 5vw, 3.25rem) 0 clamp(1.75rem, 4vw, 2.5rem);
 }
 
+/* On a project page the tagline needs a gap under it to clear the
+   Role / Duration / Type of Work row. The gallery page has no such row, so
+   that gap would just be dead space above the photos — remove it here. */
+.cs-header--warm .cs-tagline { margin-bottom: 0; }
+
 .gallery-intro {
   padding-top: clamp(3rem, 7vw, 4.5rem);
 }
@@ -1114,7 +1125,7 @@ a.fun-card:focus-visible {
 @media (max-width: 640px) {
   .fun-grid { grid-template-columns: 1fr; }
   .food-grid { grid-template-columns: 1fr; }              /* phone */
-  .cs-meta { flex-direction: column; gap: 1.25rem; }
+  .cs-meta { grid-template-columns: 1fr; row-gap: 1.25rem; }  /* one per line */
   .gate-form { flex-direction: column; }
   .contact-links a { margin: 0.3rem 0.2rem; }
 }
