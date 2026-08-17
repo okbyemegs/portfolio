@@ -741,9 +741,6 @@ a.fun-card:focus-visible {
   color: var(--accent);
 }
 
-/* A quieter version of the pull quote, for a short aside in your own voice */
-.cs-quote--small { font-size: clamp(1.1rem, 2.2vw, 1.4rem); }
-
 /* Headline number — <p class="cs-stat"><strong>35%</strong> the rest…</p> */
 .cs-stat {
   max-width: 42em;
@@ -868,10 +865,10 @@ a.fun-card:focus-visible {
   width: 100%;
 }
 
-/* Prev/next-style footer link on case studies */
+/* The main "back to all works" exit at the end of a case study */
 .cs-footer {
   text-align: center;
-  padding-bottom: var(--section-pad);
+  padding-bottom: clamp(2rem, 5vw, 3.25rem);
 }
 
 .cs-footer a {
@@ -880,6 +877,30 @@ a.fun-card:focus-visible {
   font-size: 1.4rem;
   color: var(--accent);
 }
+
+/* Small, muted previous / next links between case studies.
+   Deliberately quiet — "back to all works" above stays the primary exit. */
+.cs-pagenav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--side-pad) var(--section-pad);
+  font-size: 0.9rem;
+}
+
+.cs-pagenav a {
+  color: var(--navy);
+  opacity: 0.75;
+  text-decoration: none;
+}
+
+.cs-pagenav a:hover,
+.cs-pagenav a:focus-visible { opacity: 1; text-decoration: underline; }
+
+/* Next always sits on the right, even when there's no Previous beside it */
+.cs-pagenav .is-next { margin-left: auto; text-align: right; }
 
 /* --------------------------------------------------------------------------
    12. RESPONSIVE — tablets & phones

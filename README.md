@@ -102,13 +102,21 @@ Want a smaller, centred image (nice for mobile screenshots)? Use
 
 Placeholders and roughly the shape of image that fits best:
 
-| Placeholder file | Where it appears | Best shape |
+| File to replace | Where it appears | Best shape |
 |---|---|---|
-| `portrait-placeholder.svg` | Hero portrait | Portrait (4:5), e.g. 800×1000px |
-| `project-1/2/3-cover-placeholder.svg` | The 3 work cards | Landscape (4:3), e.g. 1200×900px |
+| `portrait.jpg` | Hero portrait | Portrait (4:5), e.g. 800×1000px |
+| `frank-card.png` | Work card 1 (FRANK) | Landscape (4:3), e.g. 1200×900px |
+| `chatbot-card.png` | Work card 2 (Chatbot) | Landscape (4:3) |
+| `bundling-card.png` | Work card 3 (Soft Bundling) | Landscape (4:3) |
 | `fun-gachapon.png`, `fun-*-placeholder.svg` | Other Fun Things cards | Landscape (16:10) |
-| `project-body-placeholder-wide.svg` | Wide case-study images | Landscape (16:9) |
-| `project-body-placeholder-narrow.svg` | Narrow case-study images | Portrait or square |
+| `frank-*.png` | Inside the FRANK case study | Wide, or tall for mobile shots |
+| `chatbot-*.png` | Inside the Chatbot case study | Wide, `chatbot-topics.png` is tall |
+| `bundling-*.png` | Inside the Soft Bundling case study | Wide (16:9) |
+
+> ⚠️ **Filenames must match exactly** — including lowercase and the `.png`
+> ending. On a Mac, Finder hides file extensions by default, so renaming can
+> accidentally create `name.png.png`. Turn on **Finder → Settings → Advanced →
+> Show all filename extensions** to see the real name.
 
 Don't worry about exact sizes — images are automatically cropped/scaled to
 fit. Just avoid enormous files (aim under ~1&nbsp;MB each; [tinypng.com](https://tinypng.com)
