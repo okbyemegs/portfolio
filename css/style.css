@@ -293,12 +293,48 @@ html.gate-locked body > *:not(#gate) { display: none; }
    -------------------------------------------------------------------------- */
 .about { background: var(--blue-light); padding: var(--section-pad) 0; }
 
+/* Text on the left, a modest photo of Mieko on the right.
+   The photo column is capped in rem (a fixed-ish width) rather than given a
+   share of the row, so it stays a warm detail beside the copy instead of
+   growing into a hero image on a wide screen. */
+.about-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 15rem);
+  gap: clamp(1.75rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
 .about-body {
   max-width: 44em;
   font-size: clamp(1.05rem, 1.8vw, 1.2rem);
 }
 
 .about-body p + p { margin-top: 1.4em; }
+
+.about-photo {
+  margin: 0;
+  max-width: 15rem;
+}
+
+.about-photo img {
+  display: block;
+  width: 100%;
+  /* Portrait, so she reads as a photo beside the text rather than a banner.
+     "crop-face" (further down this file) keeps her face in frame. */
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 1.25rem;
+  box-shadow: 0 8px 26px rgba(27, 58, 75, 0.14);
+}
+
+.about-photo figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  font-style: italic;
+  color: var(--navy);
+  opacity: 0.85;   /* checked against the light blue — still passes AA */
+}
 
 /* --------------------------------------------------------------------------
    7. MY WORKS — the 3 project cards
@@ -360,9 +396,12 @@ html.gate-locked body > *:not(#gate) { display: none; }
 /* Tighter than the other sections, so all four cards read as one grid */
 .fun { background: var(--yellow); padding: clamp(2.75rem, 6vw, 4.25rem) 0; }
 
+/* Three cards in a single row on desktop.
+   ✏️ If you add a fourth card it will wrap onto a second row on its own —
+      change the 3 below to 4 if you'd rather they all stayed in one line. */
 .fun-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: clamp(1rem, 2vw, 1.5rem);
 }
 
@@ -372,10 +411,10 @@ html.gate-locked body > *:not(#gate) { display: none; }
   overflow: hidden;
 }
 
-/* SQUARE image area. These four images are a mix of orientations — two tall
-   phone screenshots, a portrait photo of Mieko and a portrait photo of
-   cookies — and a square is the shape that treats all of them least badly.
-   A wide box used to slice tall screenshots down to a thin middle strip.
+/* SQUARE image area. These three images are a mix of orientations — two tall
+   phone screenshots and a portrait photo of cookies — and a square is the
+   shape that treats all of them least badly. A wide box used to slice the
+   tall screenshots down to a thin, meaningless middle strip.
    Each image then picks its own anchor point with a crop- class below. */
 .fun-card img {
   width: 100%;
@@ -410,13 +449,20 @@ img.crop-upper { object-position: center 16%; }
    ✏️ Same idea as above: lower shows more of the top. */
 img.crop-face { object-position: center 38%; }
 
-/* Square images make the cards taller, so the text block is kept tight to
-   keep all four cards within about two screens. */
-.fun-card-text { padding: 0.85rem 1.05rem 1rem; }
+/* Three-across means each card is narrower, so the text is scaled down to
+   match — tighter padding, a smaller heading that won't wrap awkwardly, and
+   slightly smaller body copy. Together this keeps the section to about one
+   screen. */
+.fun-card-text { padding: 0.7rem 0.9rem 0.9rem; }
 
-.fun-card h3 { font-size: 1.15rem; margin-bottom: 0.3rem; color: var(--white); }
+.fun-card h3 {
+  font-size: 1rem;
+  line-height: 1.3;
+  margin-bottom: 0.25rem;
+  color: var(--white);
+}
 
-.fun-card p { font-size: 0.92rem; line-height: 1.55; opacity: 0.9; color: var(--white); }
+.fun-card p { font-size: 0.85rem; line-height: 1.5; opacity: 0.9; color: var(--white); }
 
 /* If you want to highlight a word inside a navy fun card, wrap it in
    <span class="accent"> — it turns soft orange there so it stays readable */
@@ -1140,12 +1186,16 @@ a.fun-card:focus-visible {
 @media (max-width: 900px) {
   .works-grid { grid-template-columns: 1fr; max-width: 30rem; margin: 0 auto; }
   .food-grid { grid-template-columns: repeat(2, 1fr); }   /* tablet */
+  .fun-grid { grid-template-columns: repeat(2, 1fr); }    /* tablet */
   /* NOTE: the fun cards deliberately keep their 1:1 square image here.
      A short, wide box used to be forced on narrow screens, but that sliced
      the tall screenshots down to an unreadable strip — the crop matters
      more than the extra height. */
   .hero .container { grid-template-columns: 1fr; }
   .hero-portrait { max-width: 24rem; }
+  /* Mieko drops below the About Me text and centres herself */
+  .about-layout { grid-template-columns: 1fr; }
+  .about-photo { max-width: 16rem; margin-top: 0.5rem; }
 }
 
 @media (max-width: 640px) {

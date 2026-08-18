@@ -88,18 +88,32 @@
       <div class="container">
         <span class="eyebrow">01 — About Me</span>
         <h2 class="section-title">A little bit <span class="accent">about me</span></h2>
-        <div class="about-body">
-          <!-- ✏️ EDIT: your About Me paragraphs -->
-          <p>
-            In my 9-to-6, I design for the next big thing in banking — interviewing
-            users, asking a lot of questions, and synthesising research along the
-            way. I believe the best products feel like a warm conversation.
-          </p>
-          <p>
-            Outside of work, you'll find me trying my hand whipping up something yummy, filming
-            slightly chaotic TikToks, or being bossed around by my Shiba Inu, Mieko.
-            I care about designing with empathy, and having fun while I'm at it.
-          </p>
+        <!-- Text on one side, Mieko on the other. On phones this stacks and
+             the photo drops below the words. -->
+        <div class="about-layout">
+
+          <div class="about-body">
+            <!-- ✏️ EDIT: your About Me paragraphs -->
+            <p>
+              In my 9-to-6, I design for the next big thing in banking — interviewing
+              users, asking a lot of questions, and synthesising research along the
+              way. I believe the best products feel like a warm conversation.
+            </p>
+            <p>
+              Outside of work, you'll find me trying my hand whipping up something yummy, filming
+              slightly chaotic TikToks, or being bossed around by my Shiba Inu, Mieko.
+              I care about designing with empathy, and having fun while I'm at it.
+            </p>
+          </div>
+
+          <!-- ✏️ REPLACE IMAGE: overwrite images/fun-mieko.jpg -->
+          <figure class="about-photo">
+            <img class="crop-face" src="images/fun-mieko.jpg" width="1050" height="1400"
+                 loading="lazy" alt="Mieko, my Shiba Inu.">
+            <!-- ✏️ EDIT or delete this caption line -->
+            <figcaption>Chief treats officer, professional napper, occasional yapper.</figcaption>
+          </figure>
+
         </div>
       </div>
     </section>
@@ -200,18 +214,7 @@
             </div>
           </a>
 
-          <!-- ITEM 3 — Mieko -->
-          <div class="fun-card">
-            <!-- ✏️ REPLACE IMAGE: overwrite images/fun-mieko.jpg
-                 "crop-face" keeps her face in frame on this tall photo -->
-            <img class="crop-face" src="images/fun-mieko.jpg" width="1050" height="1400" loading="lazy" alt="Mieko the Shiba Inu">
-            <div class="fun-card-text">
-              <h3>Mieko the Shiba 🐕</h3>
-              <p>Chief treats officer, professional napper, occasional yapper.</p>
-            </div>
-          </div>
-
-          <!-- ITEM 4 — Food adventures. Links to the gallery page food.html -->
+          <!-- ITEM 3 — Food adventures. Links to the gallery page food.html -->
           <a class="fun-card" href="food.html">
             <!-- ✏️ REPLACE IMAGE: overwrite images/fun-food.jpg
                  No crop- class: the cookies fill the frame, so centre is fine -->
