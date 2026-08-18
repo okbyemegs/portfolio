@@ -234,6 +234,10 @@ Domains) and follow their "add custom domain" wizard.
 
 ## 8. Quick "help, I broke it" tips
 
+- **I made a change but the site looks exactly the same?** Your browser is
+  showing you a saved copy. See "Why the `?v=` is on the end of every link"
+  just below — that's what it's there to prevent. To force a fresh copy
+  right now: **Cmd + Shift + R** on a Mac, **Ctrl + Shift + R** on Windows.
 - The site looks unstyled? Check `index.html` and `css/style.css` are still
   in the right folders — the HTML files expect `css/`, `js/`, and `images/`
   to sit next to them.
@@ -242,3 +246,27 @@ Domains) and follow their "add custom domain" wizard.
 - Made a mess? This project lives in Git/GitHub, so every previous version
   is saved — you can always restore an older copy of a file from GitHub's
   "History" view.
+
+### Why the `?v=` is on the end of every link
+
+Near the top of each HTML page you'll see lines like:
+
+```html
+<link rel="stylesheet" href="css/style.css?v=2026-08-18">
+<script src="js/main.js?v=2026-08-18"></script>
+```
+
+Browsers save a copy of your stylesheet and scripts so the site loads fast
+next time. That's helpful for visitors, and a nuisance for you: after you
+edit `css/style.css`, your browser may keep showing you the **old** version
+for days, which looks exactly like "my change didn't work".
+
+The `?v=2026-08-18` bit is a label, not a real file name — `style.css?v=1`
+and `style.css?v=2` are the same file, but a browser treats them as two
+different addresses and fetches a fresh copy when the label changes.
+
+**So: whenever you edit `css/style.css` or anything in `js/`, change that
+date to today's date everywhere it appears.** It's the same value on every
+page, so a find-and-replace across the five HTML files does it in one go.
+If you forget, nothing breaks — you and your visitors may just see the old
+version for a while.
