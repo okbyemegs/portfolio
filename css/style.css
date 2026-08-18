@@ -465,7 +465,9 @@ img.crop-face { object-position: center 38%; }
    with nothing trimmed. Use this when an image is so much taller than its
    slot that any crop would cut off something that matters. The leftover
    space is filled with cream so it reads as a deliberate mat rather than
-   a gap in the card. */
+   a gap in the card.
+   Nothing uses this at the moment — it's here for the next time an image
+   won't survive a crop. Add class="fit-whole" to that <img>. */
 img.fit-whole {
   object-fit: contain;
   background: var(--cream);
