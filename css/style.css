@@ -291,7 +291,14 @@ html.gate-locked body > *:not(#gate) { display: none; }
 /* --------------------------------------------------------------------------
    6. ABOUT ME
    -------------------------------------------------------------------------- */
-.about { background: var(--blue-light); padding: var(--section-pad) 0; }
+/* Deliberately tighter than the other sections. This one is a heading, two
+   short paragraphs and a small photo — the full --section-pad left it
+   looking half empty.
+   ✏️ Raise these two numbers to give the section more breathing room. */
+.about {
+  background: var(--blue-light);
+  padding: clamp(3rem, 6vw, 5rem) 0 clamp(2.75rem, 5vw, 4rem);
+}
 
 /* Text on the left, a modest photo of Mieko on the right.
    The photo column is capped in rem (a fixed-ish width) rather than given a
@@ -301,8 +308,13 @@ html.gate-locked body > *:not(#gate) { display: none; }
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 15rem);
   gap: clamp(1.75rem, 4vw, 3.5rem);
-  align-items: start;
+  align-items: start;   /* photo starts level with the heading */
 }
+
+/* The heading sits inside the left column so the photo can start at the
+   same height as it. Its usual large bottom margin is trimmed here — the
+   paragraphs follow straight after. */
+.about-col .section-title { margin-bottom: clamp(1rem, 2vw, 1.5rem); }
 
 .about-body {
   max-width: 44em;
@@ -448,6 +460,16 @@ img.crop-upper { object-position: center 16%; }
    head near the top of the picture doesn't get trimmed.
    ✏️ Same idea as above: lower shows more of the top. */
 img.crop-face { object-position: center 38%; }
+
+/* The opposite of the crop- classes: show the WHOLE image, shrunk to fit,
+   with nothing trimmed. Use this when an image is so much taller than its
+   slot that any crop would cut off something that matters. The leftover
+   space is filled with cream so it reads as a deliberate mat rather than
+   a gap in the card. */
+img.fit-whole {
+  object-fit: contain;
+  background: var(--cream);
+}
 
 /* Three-across means each card is narrower, so the text is scaled down to
    match — tighter padding, a smaller heading that won't wrap awkwardly, and
