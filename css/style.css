@@ -385,6 +385,33 @@ html.gate-locked body > *:not(#gate) { display: none; }
 
 .work-card-text { padding: 1.5rem 1.5rem 1.75rem; }
 
+/* The little label above each project title, e.g.
+   "SHIPPED PRODUCT · 35% LIFT IN ACCOUNT OPENINGS".
+   Deliberately small and quiet next to the title, but in the strong accent
+   blue so it still registers at a glance. Small caps + wide letter-spacing
+   is what makes it read as a label rather than a sentence.
+   ✏️ Edit the words in index.html; edit the look here. */
+.work-card-tag {
+  display: block;
+  font-family: var(--font-body);
+  /* Sized so the longest tag ("Shipped product · 35% lift in account
+     openings") stays on one line inside a card at every desktop width.
+     The three cards get narrow on a small laptop, so the label shrinks a
+     hair there and settles at its full size on a roomier screen.
+     ✏️ If you write a longer tag it may wrap to two lines — either shorten
+        the words or nudge the last number down a touch. */
+  font-size: clamp(0.5rem, 0.39vw + 0.25rem, 0.5625rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.45;
+  color: var(--accent);
+  margin-bottom: 0.45rem;
+  /* Stops the longest tag from breaking in an awkward place if it does
+     ever wrap (on a phone, or if you write a longer one). */
+  text-wrap: balance;
+}
+
 .work-card h3 {
   font-size: 1.45rem;
   margin-bottom: 0.5rem;
