@@ -759,6 +759,86 @@ a.fun-card:focus-visible {
   color: var(--navy);
 }
 
+/* --------------------------------------------------------------------------
+   PROOF CALLOUT — the headline result, shown near the top of a project page
+   just under the Role / Duration / Type of Work row.
+
+   It's a preview of the strongest evidence, so a visitor sees what the work
+   achieved before reading a word of the story. The fuller version still
+   lives down in Outcome & Reflections.
+
+   Three shapes, all sharing one look:
+
+   ONE NUMBER
+     <div class="cs-proof">
+       <p class="cs-proof-item">
+         <span class="cs-proof-num">35%</span>
+         <span class="cs-proof-label">increase in account openings…</span>
+       </p>
+     </div>
+
+   TWO NUMBERS SIDE BY SIDE — just add a second .cs-proof-item; they sit
+   side by side on a wide screen and stack on a phone all by themselves.
+
+   A FINDING INSTEAD OF A NUMBER — swap .cs-proof-num for
+   .cs-proof-statement and write the sentence in it.
+   -------------------------------------------------------------------------- */
+/* When the proof callout is the first thing in the body, the page pulls its
+   normal big top padding in, so the callout sits close under the metadata
+   row and reads as part of the header rather than floating on its own.
+   (":has(...)" just means "when this contains that".) */
+.case-study:has(> .cs-proof:first-child) {
+  padding-top: clamp(1rem, 2vw, 1.5rem);
+}
+
+.cs-proof {
+  max-width: 46em;
+  margin: 0 auto;
+  width: 100%;
+  background: var(--cream);
+  border-radius: 1.25rem;
+  padding: clamp(1.5rem, 4vw, 2.25rem) clamp(1.5rem, 4vw, 2.5rem);
+  display: grid;
+  /* one column becomes two only when there's room for both */
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  text-align: center;
+}
+
+.cs-proof-item { margin: 0; }
+
+/* The big number */
+.cs-proof-num {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: clamp(2.75rem, 6.5vw, 4.25rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+
+/* The short line underneath it */
+.cs-proof-label {
+  display: block;
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  line-height: 1.45;
+  color: var(--navy);
+}
+
+/* Used instead of a number when the proof is a finding, not a figure.
+   Sized to carry the same weight on the page as the big numbers do. */
+.cs-proof-statement {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 3vw, 1.9rem);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--accent);
+  text-wrap: balance;
+}
+
 /* Small muted aside, e.g. "(theme names in progress)" */
 .cs-muted {
   font-size: 0.9rem;
