@@ -124,8 +124,5 @@ var TICKLE_STRENGTH = 1.0;  // overall intensity — 0.5 = whisper, 2 = giddy
   window.addEventListener("scroll", measure, { passive: true });
   window.addEventListener("resize", measure);
   window.addEventListener("load", measure); // re-measure once fonts/images load
-  // The password gate hides the page at first, so everything measures as
-  // zero until it unlocks — re-measure the moment that happens.
-  window.addEventListener("portfolio:unlocked", measure);
   measure();
 })();

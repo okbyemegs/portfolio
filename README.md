@@ -9,19 +9,14 @@ build tools, no coding knowledge required** to edit it.
 ## 1. How to view the site on your computer
 
 The simplest way: **double-click `index.html`** and it opens in your browser.
-That's it — the whole site works this way, including the password gate and
-all the project pages.
+That's it — the whole site works this way, including all the project pages.
 
 > ⚠️ **Keep the folders together.** `index.html` needs `css/`, `js/`,
 > `images/` and `fonts/` sitting right next to it. If you move or download
 > `index.html` on its own, the page loads with no styling at all — plain
-> black-on-white text, blue underlined links, broken images, and the password
-> box sitting as a lump at the top instead of covering the screen. That's the
+> black-on-white text, blue underlined links and broken images. That's the
 > tell-tale sign the folders aren't alongside it. Nothing is broken; just open
 > it from inside the full folder.
-
-> 💡 The default password is **`mieko`** (capitals and spaces don't matter, so
-> `Mieko` works too) — see "Changing the password" below.
 
 If you ever want a "proper" local preview (identical to how a host serves it),
 and you have a Mac, you can also run this in Terminal from the project folder:
@@ -38,7 +33,6 @@ and you have a Mac, you can also run this in Terminal from the project folder:
 | `project-1.html` / `project-2.html` / `project-3.html` | One case-study page per project |
 | `css/style.css` | ALL the colours, fonts, and spacing, in one place |
 | `food.html` | The Food adventures photo gallery |
-| `js/main.js` | The password gate (the password is set at the top of this file) |
 | `js/lightbox.js` | Click any image to see it full size; browses photo sets |
 | `js/carousel.js` | Turns an image block with several images into a carousel |
 | `js/tickle.js`, `js/sparkle.js` | The hero jiggle and the star cursor |
@@ -123,7 +117,7 @@ Placeholders and roughly the shape of image that fits best:
 | `bundling-card.jpg` | Work card 3 (Soft Bundling) | Landscape (4:3) |
 | `fun-photobooth.jpg`, `fun-gachapon.jpg`, `fun-food.jpg` | Other Fun Things cards | Square (1:1) |
 | `fun-mieko.jpg` | The photo of Mieko in About Me | Portrait (4:5) |
-| `food-1.jpg` … `food-8.jpg`, `food-9.png`, `food-10.png` | Food adventures gallery (`food.html`) | Square works best |
+| `food-1.jpg` … `food-8.jpg` | Food adventures gallery (`food.html`) | Square works best |
 | `frank-*.jpg` | Inside the FRANK case study | Wide, or tall for mobile shots |
 | `chatbot-*.jpg` | Inside the Chatbot case study | Wide (the carousels and charts) |
 | `bundling-*.png` | Inside the Soft Bundling case study | Wide (16:9) |
@@ -156,36 +150,26 @@ href="fonts/fonts.css">` line in each HTML file's `<head>` with the
 
 ---
 
-## 6. The password gate — read this bit! 🔐
+## 6. Keeping the site private 🔐
 
-### Changing the password
+**There is no password on the site.** Anyone with the link can read it. The
+password gate that used to sit in front of every page has been removed.
 
-Open `js/main.js`. The first line of real code is:
+Two things still hold visitors at arm's length:
 
-```js
-var SITE_PASSWORD = "mieko";
-```
+- Every page carries `<meta name="robots" content="noindex">`, which asks
+  Google and friends not to list it. So it won't turn up in search results —
+  people need the link. (Delete that line from each page when you *do* want
+  to be findable.)
+- If you host it from a **private** GitHub repo, the code stays hidden. Note
+  that the published *site* is still public — a private repo hides the source,
+  not the pages.
 
-Change `mieko` to anything you like (keep the quotes). Visitors stay unlocked
-for their current browser tab only.
-
-**Capital letters and spaces don't matter.** `Mieko`, `mieko` and `  Mieko  `
-all get in. Phone keyboards love to capitalise the first letter for you, and a
-name looks like it wants a capital anyway, so the gate ignores both rather
-than turning someone away over it.
-
-### ⚠️ Why this is NOT real security
-
-This gate runs entirely in the visitor's browser. Anyone who opens their
-browser's dev tools can read the password in `js/main.js` or skip the gate
-completely. It will keep out casual visitors — a curious colleague, someone
-who stumbles on the link — **but not anyone determined.** Never put anything
-truly confidential behind it.
-
-### Real password protection (do this when you deploy)
+### If you want a real password later
 
 Real protection has to happen on the **server**, before the page is ever sent
-to the browser. The good news: hosts offer this as a tick-box feature.
+to the browser — not in the page itself, where anyone can read around it.
+Hosts offer this as a tick-box feature:
 
 - **Netlify** — *Site configuration → Access & security → Site protections*
   lets you set a site-wide password. This is a **paid-plan feature**, but it's
@@ -202,13 +186,6 @@ to the browser. The good news: hosts offer this as a tick-box feature.
   Netlify's free tier.
 
 (Pricing changes — double-check each host's current plans.)
-
-The gate appears on every page, so a direct link to a project page can't slip
-past it. Because it remembers you for the browser tab, you only type the
-password once — moving between pages after that never asks again. Once you
-have real protection turned on, you can remove it entirely if you like:
-delete the `<div id="gate">…</div>` block and the small `<script>` in the
-`<head>` of each HTML file.
 
 ---
 
@@ -252,8 +229,8 @@ Domains) and follow their "add custom domain" wizard.
 Near the top of each HTML page you'll see lines like:
 
 ```html
-<link rel="stylesheet" href="css/style.css?v=2026-08-18">
-<script src="js/main.js?v=2026-08-18"></script>
+<link rel="stylesheet" href="css/style.css?v=2026-09-13">
+<script src="js/sparkle.js?v=2026-09-13"></script>
 ```
 
 Browsers save a copy of your stylesheet and scripts so the site loads fast
@@ -261,7 +238,7 @@ next time. That's helpful for visitors, and a nuisance for you: after you
 edit `css/style.css`, your browser may keep showing you the **old** version
 for days, which looks exactly like "my change didn't work".
 
-The `?v=2026-08-18` bit is a label, not a real file name — `style.css?v=1`
+The `?v=2026-09-13` bit is a label, not a real file name — `style.css?v=1`
 and `style.css?v=2` are the same file, but a browser treats them as two
 different addresses and fetches a fresh copy when the label changes.
 

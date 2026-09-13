@@ -18,7 +18,7 @@
      if you swap colours, keep text dark on the light backgrounds! */
   --blue:        #98CCDE;  /* medium blue — project page headers */
   --blue-light:  #ADD8E5;  /* light blue — About section */
-  --cream:       #FFF1C1;  /* soft cream — hero and password gate */
+  --cream:       #FFF1C1;  /* soft cream — hero and proof callouts */
   --yellow:      #FCE6A9;  /* warm cream-yellow — Other Fun Things bg */
   --orange-soft: #FFCC80;  /* soft orange — accents on navy sections/cards */
   --off-white:   #FAF7F0;  /* warm off-white — My Works bg, project pages */
@@ -137,78 +137,7 @@ a { color: var(--accent); }
 }
 
 /* --------------------------------------------------------------------------
-   3. PASSWORD GATE
-   --------------------------------------------------------------------------
-   The gate overlay markup sits at the top of index.html (landing page only).
-   The small script in that page's <head> adds "gate-locked" to <html>
-   before anything renders, so content never flashes.
-   ✏️ The password itself is set at the top of js/main.js.
-   -------------------------------------------------------------------------- */
-#gate { display: none; }
-
-html.gate-locked #gate {
-  display: flex;
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  background: var(--cream);
-  align-items: center;
-  justify-content: center;
-  padding: var(--side-pad);
-  text-align: center;
-}
-
-/* Hide the actual site while locked */
-html.gate-locked body > *:not(#gate) { display: none; }
-
-.gate-inner { max-width: 26rem; width: 100%; }
-
-.gate-inner h1 {
-  font-size: clamp(2rem, 6vw, 2.75rem);
-  margin-bottom: 0.75rem;
-}
-
-.gate-inner p { margin-bottom: 2rem; }
-
-.gate-form { display: flex; gap: 0.5rem; }
-
-.gate-form input {
-  flex: 1;
-  font: inherit;
-  padding: 0.85rem 1.1rem;
-  border: 1.5px solid var(--navy);
-  border-radius: 999px;
-  background: var(--off-white);
-  color: var(--navy);
-  outline: none;
-  min-width: 0;
-}
-
-.gate-form input:focus { box-shadow: 0 0 0 3px rgba(27, 58, 75, 0.25); }
-
-.gate-form button {
-  font: inherit;
-  font-weight: 700;
-  padding: 0.85rem 1.5rem;
-  border: none;
-  border-radius: 999px;
-  background: var(--navy);
-  color: var(--cream);
-  cursor: pointer;
-}
-
-.gate-form button:hover { background: var(--navy-deep); }
-
-.gate-error {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--navy);
-  min-height: 1.5em;         /* reserves space so the layout doesn't jump */
-}
-
-/* --------------------------------------------------------------------------
-   4. NAVIGATION
+   3. NAVIGATION
    -------------------------------------------------------------------------- */
 .site-nav {
   position: sticky;
@@ -255,7 +184,7 @@ html.gate-locked body > *:not(#gate) { display: none; }
 .site-nav--cream { background: var(--off-white); }
 
 /* --------------------------------------------------------------------------
-   5. HERO
+   4. HERO
    -------------------------------------------------------------------------- */
 .hero {
   background: var(--cream);
@@ -289,7 +218,7 @@ html.gate-locked body > *:not(#gate) { display: none; }
 }
 
 /* --------------------------------------------------------------------------
-   6. ABOUT ME
+   5. ABOUT ME
    -------------------------------------------------------------------------- */
 /* Deliberately tighter than the other sections. This one is a heading, two
    short paragraphs and a small photo — the full --section-pad left it
@@ -349,7 +278,7 @@ html.gate-locked body > *:not(#gate) { display: none; }
 }
 
 /* --------------------------------------------------------------------------
-   7. MY WORKS — the 3 project cards
+   6. MY WORKS — the 3 project cards
    -------------------------------------------------------------------------- */
 .works { background: var(--off-white); padding: var(--section-pad) 0; }
 
@@ -430,7 +359,7 @@ html.gate-locked body > *:not(#gate) { display: none; }
 }
 
 /* --------------------------------------------------------------------------
-   8. OTHER FUN THINGS
+   7. OTHER FUN THINGS
    -------------------------------------------------------------------------- */
 /* Tighter than the other sections, so all four cards read as one grid */
 .fun { background: var(--yellow); padding: clamp(2.75rem, 6vw, 4.25rem) 0; }
@@ -547,7 +476,7 @@ a.fun-card:focus-visible {
 }
 
 /* --------------------------------------------------------------------------
-   9. CONTACT
+   8. CONTACT
    -------------------------------------------------------------------------- */
 .contact {
   background: var(--navy);
@@ -602,7 +531,7 @@ a.fun-card:focus-visible {
 .contact-links a:hover { background: var(--navy-deep); }
 
 /* --------------------------------------------------------------------------
-   10. FOOTER
+   9. FOOTER
    -------------------------------------------------------------------------- */
 .site-footer {
   background: var(--navy);
@@ -614,7 +543,7 @@ a.fun-card:focus-visible {
 }
 
 /* --------------------------------------------------------------------------
-   11. PROJECT (CASE STUDY) PAGES
+   10. PROJECT (CASE STUDY) PAGES
    --------------------------------------------------------------------------
    The body of a case study is just a stack of blocks inside <article
    class="case-study">. Each block is self-contained — copy, paste, delete
@@ -1312,7 +1241,7 @@ a.fun-card:focus-visible {
 }
 
 /* --------------------------------------------------------------------------
-   12. RESPONSIVE — tablets & phones
+   11. RESPONSIVE — tablets & phones
    -------------------------------------------------------------------------- */
 @media (max-width: 900px) {
   .works-grid { grid-template-columns: 1fr; max-width: 30rem; margin: 0 auto; }
@@ -1333,6 +1262,5 @@ a.fun-card:focus-visible {
   .fun-grid { grid-template-columns: 1fr; }
   .food-grid { grid-template-columns: 1fr; }              /* phone */
   .cs-meta { grid-template-columns: 1fr; row-gap: 1.25rem; }  /* one per line */
-  .gate-form { flex-direction: column; }
   .contact-links a { margin: 0.3rem 0.2rem; }
 }
