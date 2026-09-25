@@ -223,6 +223,42 @@ a { color: var(--accent); }
   line-height: 1.75;
 }
 
+/* --------------------------------------------------------------------------
+   METHOD PILLS — the little row of research methods under the hero text.
+   Written as a plain list in index.html; the bullets are turned off here.
+   The pills wrap onto as many lines as they need rather than shrinking, so
+   they stay readable on every screen.
+   -------------------------------------------------------------------------- */
+.method-pills {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+}
+
+.method-pills li {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--navy);
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  /* A hairline edge so every pill reads as a shape. The cream pill is almost
+     the same colour as the cream hero behind it, and without this it would
+     look like floating text rather than a pill. */
+  border: 1px solid rgba(27, 58, 75, 0.14);
+}
+
+/* ✏️ THE PILL COLOURS cycle through these four, in order, and then start
+   over — so you never have to choose one when you add a pill. */
+.method-pills li:nth-child(4n + 1) { background: var(--blue-light);  }
+.method-pills li:nth-child(4n + 2) { background: var(--orange-soft); }
+.method-pills li:nth-child(4n + 3) { background: var(--yellow);      }
+.method-pills li:nth-child(4n + 4) { background: var(--blue);        }
+
 .hero-portrait img {
   width: 100%;
   border-radius: 1.25rem;
@@ -657,6 +693,26 @@ a.fun-card:focus-visible {
 }
 
 .cs-meta dd { font-weight: 700; }
+
+/* The "Cross-functional" line. It spans the full width under a dashed rule
+   so it reads as extra context rather than a fourth equal column, and its
+   label sits beside the value instead of above it. Only the Chatbot and
+   Soft Bundling pages use it.
+   ✏️ The dashed rule is deliberately lighter than the solid one above the
+      metadata row — raise the 0.32 to make it more visible. */
+.cs-meta-extra {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem 1rem;
+  border-top: 1.5px dashed rgba(27, 58, 75, 0.32);
+  padding-top: 1.1rem;
+  margin-top: 0.4rem;
+}
+
+/* the label keeps the small-caps styling it inherits from .cs-meta dt */
+.cs-meta-extra dt { margin-bottom: 0; }
 
 /* The flexible body.
    Only the top/bottom padding is set here — using the `padding` shorthand
