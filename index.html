@@ -9,9 +9,9 @@
 
   <!-- Fonts: Fraunces (headings) + Karla (body) — free Google fonts,
        self-hosted in the fonts/ folder so they load fast and work offline -->
-  <link rel="stylesheet" href="fonts/fonts.css?v=2026-09-13">
+  <link rel="stylesheet" href="fonts/fonts.css?v=2026-09-25">
 
-  <link rel="stylesheet" href="css/style.css?v=2026-09-13">
+  <link rel="stylesheet" href="css/style.css?v=2026-09-25">
 </head>
 <body>
 
@@ -27,13 +27,20 @@
       </div>
     </div>
   </nav>
+  <main>
 
   <!-- ======================================================================
-       1. HERO
+       1. INTRO + SELECT WORKS — two columns side by side on desktop.
+
+       The LEFT column is "position: sticky", so it stays put while the work
+       cards in the RIGHT column scroll past it. No JavaScript involved.
+       Below 900px the two stack: the intro first, then the cards.
        ====================================================================== -->
-  <header class="hero">
-    <div class="container">
-      <div class="hero-text">
+  <div class="intro-works">
+    <div class="container intro-works-grid">
+
+      <!-- ================= LEFT: the intro that stays put ================= -->
+      <header class="intro-col">
         <!-- ✏️ EDIT: your one-line identity / role line -->
         <p class="hero-role">UX Researcher &amp; Experience Designer moving into product and marketing.</p>
         <!-- "tickle-words" makes each word jiggle when the cursor is near
@@ -57,27 +64,15 @@
           <li>Competitor benchmarking</li>
           <li>Workshop facilitation</li>
         </ul>
-      </div>
-      <div class="hero-portrait">
-        <!-- ✏️ Your portrait lives at images/portrait.jpg — replace that file
-             to change the photo ("tickle" = it jiggles when the cursor is near) -->
-        <img class="tickle" src="images/portrait.jpg" alt="Portrait of Megan, smiling in a black top among palm trees">
-      </div>
-    </div>
-  </header>
+      </header>
 
-  <main>
-
-    <!-- ====================================================================
-         2. MY WORKS — exactly 3 project cards
-         Each card links to its own case study page (project-1.html etc.)
-         ==================================================================== -->
-    <section class="works" id="works">
-      <div class="container">
+      <!-- ============ RIGHT: the work cards, scrolling normally ============
+           Each card links to its own case study page (project-1.html etc.) -->
+      <section class="works-col" id="works">
         <span class="eyebrow">01 — Select Works</span>
         <h2 class="section-title">My <span class="accent">works</span></h2>
 
-        <div class="works-grid">
+        <div class="works-stack">
 
           <!-- CARD 1 — ✏️ edit title & description; replace the image -->
           <a class="work-card" href="project-1.html">
@@ -103,7 +98,7 @@
             <img src="images/chatbot-card.jpg" width="375" height="812" loading="lazy" alt="Conversational AI Chatbot cover image">
             <div class="work-card-text">
               <!-- ✏️ EDIT: the little label above the title -->
-              <span class="work-card-tag">Concept validation · pre-build</span>
+              <span class="work-card-tag">4.76/5 first impression · 5 product conversions</span>
               <h3>Conversational AI Chatbot</h3>
               <p>Testing whether a Gen AI chatbot could handle real banking questions — before committing to build one.</p>
               <span class="work-card-more">Read case study →</span>
@@ -116,7 +111,7 @@
             <img src="images/bundling-card.jpg" width="682" height="698" loading="lazy" alt="Soft Bundling cover image">
             <div class="work-card-text">
               <!-- ✏️ EDIT: the little label above the title -->
-              <span class="work-card-tag">Strategic research · reshaped the roadmap</span>
+              <span class="work-card-tag">4.3/5 usability · reshaped the roadmap</span>
               <h3>Soft Bundling — A Unified Onboarding Journey</h3>
               <p>Two phases of research to help new and existing OCBC customers apply for multiple products in a single, seamless journey.</p>
               <span class="work-card-more">Read case study →</span>
@@ -124,8 +119,10 @@
           </a>
 
         </div>
-      </div>
-    </section>
+      </section>
+
+    </div>
+  </div>
 
     <!-- ====================================================================
          3. ABOUT ME
@@ -155,12 +152,10 @@
             </div>
           </div>
 
-          <!-- ✏️ REPLACE IMAGE: overwrite images/fun-mieko.jpg -->
+          <!-- ✏️ REPLACE IMAGE: overwrite images/portrait.jpg -->
           <figure class="about-photo">
-            <img class="crop-face" src="images/fun-mieko.jpg" width="1050" height="1400"
-                 loading="lazy" alt="Mieko, my Shiba Inu.">
-            <!-- ✏️ EDIT or delete this caption line -->
-            <figcaption>Chief treats officer, professional napper, occasional yapper.</figcaption>
+            <img src="images/portrait.jpg" width="1200" height="1620"
+                 loading="lazy" alt="Portrait of Megan, smiling in a black top among palm trees">
           </figure>
 
         </div>
@@ -262,7 +257,7 @@
     <p>© 2026 Megan — designed with care (and a Shiba Inu on my lap).</p>
   </footer>
 
-  <script src="js/tickle.js?v=2026-09-13"></script>
-  <script src="js/sparkle.js?v=2026-09-13"></script>
+  <script src="js/tickle.js?v=2026-09-25"></script>
+  <script src="js/sparkle.js?v=2026-09-25"></script>
 </body>
 </html>

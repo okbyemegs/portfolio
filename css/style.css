@@ -36,6 +36,9 @@
   --section-pad: clamp(4.5rem, 10vw, 8.5rem);
   --side-pad:    clamp(1.25rem, 5vw, 4rem);
   --max-width:   1160px;
+  /* Height of the sticky nav bar, measured. The sticky intro column on the
+     homepage offsets itself by this so the two never overlap. */
+  --nav-h:       69px;
 }
 
 /* --------------------------------------------------------------------------
@@ -186,17 +189,34 @@ a { color: var(--accent); }
 /* --------------------------------------------------------------------------
    4. HERO
    -------------------------------------------------------------------------- */
-.hero {
+.intro-works {
   background: var(--cream);
-  padding-top: clamp(3rem, 8vw, 6rem);
+  padding-top: clamp(2.5rem, 6vw, 4.5rem);
   padding-bottom: var(--section-pad);
 }
 
-.hero .container {
+/* Two columns: the intro on the left, the work cards on the right.
+   "align-items: start" is what MAKES THE STICKY WORK — without it the left
+   column is stretched to the full height of the row and has nothing to
+   stick within. Don't remove it. */
+.intro-works-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: clamp(2rem, 6vw, 5rem);
-  align-items: center;
+  grid-template-columns: 38fr 62fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+}
+
+/* The intro stays put while the cards scroll past it. The offset clears the
+   sticky nav bar above (--nav-h) plus a little breathing room. */
+.intro-col {
+  position: sticky;
+  top: calc(var(--nav-h) + 1.5rem);
+}
+
+/* The three cards, stacked down the right-hand column */
+.works-stack {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
 }
 
 /* The short role line above "Hi there, I am Megan."
@@ -212,9 +232,9 @@ a { color: var(--accent); }
   margin-bottom: 1rem;
 }
 
-.hero h1 {
-  font-size: clamp(2.75rem, 7.5vw, 5.5rem);
-  margin-bottom: 1.75rem;
+.intro-col h1 {
+  font-size: clamp(2.5rem, 4.6vw, 3.9rem);
+  margin-bottom: 1.5rem;
 }
 
 .hero-intro {
@@ -258,13 +278,6 @@ a { color: var(--accent); }
 .method-pills li:nth-child(4n + 2) { background: var(--orange-soft); }
 .method-pills li:nth-child(4n + 3) { background: var(--yellow);      }
 .method-pills li:nth-child(4n + 4) { background: var(--blue);        }
-
-.hero-portrait img {
-  width: 100%;
-  border-radius: 1.25rem;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-}
 
 /* --------------------------------------------------------------------------
    5. ABOUT ME
@@ -329,14 +342,6 @@ a { color: var(--accent); }
 /* --------------------------------------------------------------------------
    6. MY WORKS — the 3 project cards
    -------------------------------------------------------------------------- */
-.works { background: var(--off-white); padding: var(--section-pad) 0; }
-
-.works-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(1.5rem, 3vw, 2.5rem);
-}
-
 /* The whole card is one big link */
 .work-card {
   display: block;
@@ -1340,16 +1345,18 @@ a.fun-card:focus-visible {
    11. RESPONSIVE — tablets & phones
    -------------------------------------------------------------------------- */
 @media (max-width: 900px) {
-  .works-grid { grid-template-columns: 1fr; max-width: 30rem; margin: 0 auto; }
+  /* The two homepage columns stack: intro first, then the work cards.
+     The intro also stops sticking — there's no room for it to be useful. */
+  .intro-works-grid { grid-template-columns: 1fr; gap: clamp(2rem, 6vw, 3rem); }
+  .intro-col { position: static; top: auto; }
+
   .food-grid { grid-template-columns: repeat(2, 1fr); }   /* tablet */
   .fun-grid { grid-template-columns: repeat(2, 1fr); }    /* tablet */
   /* NOTE: the fun cards deliberately keep their 1:1 square image here.
      A short, wide box used to be forced on narrow screens, but that sliced
      the tall screenshots down to an unreadable strip — the crop matters
      more than the extra height. */
-  .hero .container { grid-template-columns: 1fr; }
-  .hero-portrait { max-width: 24rem; }
-  /* Mieko drops below the About Me text and centres herself */
+  /* The portrait drops below the About Me text and centres itself */
   .about-layout { grid-template-columns: 1fr; }
   .about-photo { max-width: 16rem; margin-top: 0.5rem; }
 }
