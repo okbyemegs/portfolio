@@ -191,7 +191,7 @@ a { color: var(--accent); }
    -------------------------------------------------------------------------- */
 .intro-works {
   background: var(--cream);
-  padding-top: clamp(2.5rem, 6vw, 4.5rem);
+  padding-top: clamp(1.75rem, 3.5vw, 2.75rem);
   padding-bottom: var(--section-pad);
 }
 
@@ -216,8 +216,17 @@ a { color: var(--accent); }
 /* The three cards, stacked down the right-hand column */
 .works-stack {
   display: grid;
-  gap: clamp(1.5rem, 3vw, 2.5rem);
+  gap: clamp(1.25rem, 2.5vw, 1.75rem);
 }
+
+/* "My works" is a column heading here, not a full-width section title, so
+   it is set smaller and tighter than the ones further down the page. */
+.works-col .section-title {
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  margin-bottom: clamp(1rem, 2vw, 1.4rem);
+}
+
+.works-col .eyebrow { margin-bottom: 0.75rem; }
 
 /* The short role line above "Hi there, I am Megan."
    Kept small and quiet so the name still leads. */
@@ -349,8 +358,10 @@ a { color: var(--accent); }
   color: var(--navy);
   border-radius: 1.25rem;
   overflow: hidden;
-  background: var(--white);
-  /* soft shadow lifts the white card off the off-white section */
+  background: var(--cream);
+  /* The card is the same cream as the section behind it, so the edge and
+     the shadow are what make it read as a card at all — keep both. */
+  border: 1px solid rgba(27, 58, 75, 0.12);
   box-shadow: 0 6px 20px rgba(27, 58, 75, 0.08);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -362,11 +373,14 @@ a { color: var(--accent); }
 
 .work-card img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  /* Deliberately short and wide. A taller image pushed the second card
+     entirely below the fold, so nothing told you there was more to scroll.
+     ✏️ Make the second number bigger for shorter cards, smaller for taller. */
+  aspect-ratio: 16 / 9;
   object-fit: cover;
 }
 
-.work-card-text { padding: 1.5rem 1.5rem 1.75rem; }
+.work-card-text { padding: 1.15rem 1.35rem 1.35rem; }
 
 /* The little label above each project title, e.g.
    "SHIPPED PRODUCT · 35% LIFT IN ACCOUNT OPENINGS".
@@ -396,8 +410,8 @@ a { color: var(--accent); }
 }
 
 .work-card h3 {
-  font-size: 1.45rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  margin-bottom: 0.4rem;
 }
 
 .work-card p { font-size: 0.98rem; opacity: 0.85; }
