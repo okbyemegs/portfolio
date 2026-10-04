@@ -215,16 +215,15 @@ a { color: var(--accent); }
   top: calc(var(--nav-h) + 1.5rem);
 }
 
-/* The three cards, stacked down the right-hand column.
-   The width is capped so no cover image is ever blown up past its own
-   pixels. The cap is set by the SMALLEST source on the page, which is
-   chatbot-card.jpg at 375px wide.
-   ✏️ If you re-export that cover bigger, raise this number to match and the
-      cards grow with it. */
+/* The three cards, stacked down the right-hand column, filling its width.
+   NOTE ON SHARPNESS: at this width the cover images are displayed about
+   593px wide. frank-card.jpg (806px) and bundling-card.jpg (682px) have
+   the pixels for it; chatbot-card.jpg is only 375px wide and is stretched
+   to fit, so it looks softer than the other two. Re-exporting that one
+   cover at about 1200px wide is the fix. */
 .works-stack {
   display: grid;
   gap: clamp(1.25rem, 2.5vw, 1.75rem);
-  max-width: 375px;
 }
 
 /* "My works" is a column heading here, not a full-width section title, so
@@ -394,7 +393,7 @@ a { color: var(--accent); }
   object-fit: cover;
 }
 
-.work-card-text { padding: 0.95rem 1.1rem 1.15rem; }
+.work-card-text { padding: 1.1rem 1.3rem 1.3rem; }
 
 /* The little label above each project title, e.g.
    "SHIPPED PRODUCT · 35% LIFT IN ACCOUNT OPENINGS".
@@ -424,12 +423,12 @@ a { color: var(--accent); }
 }
 
 .work-card h3 {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   line-height: 1.25;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.4rem;
 }
 
-.work-card p { font-size: 0.88rem; line-height: 1.5; opacity: 0.85; }
+.work-card p { font-size: 0.93rem; line-height: 1.55; opacity: 0.85; }
 
 .work-card-more {
   display: inline-block;
