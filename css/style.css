@@ -24,7 +24,8 @@
   --off-white:   #FAF7F0;  /* warm off-white — My Works bg, project pages */
   --white:       #ffffff;  /* pure white — My Works cards */
   --navy:        #1B3A4B;  /* deep navy — main text, dark sections */
-  --navy-deep:   #12293A;  /* even darker navy, for hover states */
+  --navy-deep:   #12293A;
+  --card-edge:   #E4DCC9;  /* warm hairline around the white work cards */  /* even darker navy, for hover states */
   --accent:      #17506B;  /* deep ocean blue — italic accents & links
                               (dark enough to read on every background) */
 
@@ -189,44 +190,45 @@ a { color: var(--accent); }
 /* --------------------------------------------------------------------------
    4. HERO
    -------------------------------------------------------------------------- */
-.intro-works {
+.hero {
   background: var(--cream);
-  padding-top: clamp(1.75rem, 3.5vw, 2.75rem);
-  padding-bottom: var(--section-pad);
+  padding-top: clamp(2rem, 4vw, 3.25rem);
+  padding-bottom: clamp(2rem, 4vw, 3.25rem);
 }
 
-/* Two columns: the intro on the left, the work cards on the right.
-   "align-items: start" is what MAKES THE STICKY WORK — without it the left
-   column is stretched to the full height of the row and has nothing to
-   stick within. Don't remove it. */
-.intro-works-grid {
-  display: grid;
-  grid-template-columns: 38fr 62fr;
-  gap: clamp(2rem, 5vw, 4.5rem);
-  align-items: start;
+/* A quiet link down to the work, with a gently bouncing arrow. */
+.hero-jump {
+  display: inline-block;
+  margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--accent);
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
 }
 
-/* The intro stays put while the cards scroll past it. The offset clears the
-   sticky nav bar above (--nav-h) plus a little breathing room. */
-.intro-col {
-  position: sticky;
-  top: calc(var(--nav-h) + 1.5rem);
+.hero-jump:hover,
+.hero-jump:focus-visible { border-bottom-color: var(--accent); }
+
+.hero-jump-arrow {
+  display: inline-block;
+  margin-left: 0.3rem;
+  animation: hero-nudge 1.8s ease-in-out infinite;
 }
 
-/* The three cards, stacked down the right-hand column */
-.works-stack {
-  display: grid;
-  gap: clamp(1.25rem, 2.5vw, 1.75rem);
+@keyframes hero-nudge {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(4px); }
 }
 
-/* "My works" is a column heading here, not a full-width section title, so
-   it is set smaller and tighter than the ones further down the page. */
-.works-col .section-title {
-  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
-  margin-bottom: clamp(1rem, 2vw, 1.4rem);
+/* Anyone who has asked their system for less motion gets a still arrow. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-jump-arrow { animation: none; }
 }
-
-.works-col .eyebrow { margin-bottom: 0.75rem; }
 
 /* The short role line above "Hi there, I am Megan."
    Kept small and quiet so the name still leads. */
@@ -241,9 +243,9 @@ a { color: var(--accent); }
   margin-bottom: 1rem;
 }
 
-.intro-col h1 {
-  font-size: clamp(2.5rem, 4.6vw, 3.9rem);
-  margin-bottom: 1.5rem;
+.hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4.25rem);
+  margin-bottom: 1.25rem;
 }
 
 .hero-intro {
@@ -351,6 +353,15 @@ a { color: var(--accent); }
 /* --------------------------------------------------------------------------
    6. MY WORKS — the 3 project cards
    -------------------------------------------------------------------------- */
+/* ✏️ The works section sits on the warm off-white, with white cards on top */
+.works { background: var(--off-white); padding: clamp(2.5rem, 5vw, 4rem) 0 var(--section-pad); }
+
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
 /* The whole card is one big link */
 .work-card {
   display: block;
@@ -358,10 +369,9 @@ a { color: var(--accent); }
   color: var(--navy);
   border-radius: 1.25rem;
   overflow: hidden;
-  background: var(--cream);
-  /* The card is the same cream as the section behind it, so the edge and
-     the shadow are what make it read as a card at all — keep both. */
-  border: 1px solid rgba(27, 58, 75, 0.12);
+  background: var(--white);
+  /* A warm hairline edge separates the white card from the off-white band */
+  border: 1px solid var(--card-edge);
   box-shadow: 0 6px 20px rgba(27, 58, 75, 0.08);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -430,7 +440,7 @@ a { color: var(--accent); }
    7. OTHER FUN THINGS
    -------------------------------------------------------------------------- */
 /* Tighter than the other sections, so all four cards read as one grid */
-.fun { background: var(--yellow); padding: clamp(2.75rem, 6vw, 4.25rem) 0; }
+.fun { background: var(--off-white); padding: clamp(2.75rem, 6vw, 4.25rem) 0; }
 
 /* The container becomes the anchor the sticky note is positioned against. */
 .fun .container { position: relative; }
@@ -528,6 +538,22 @@ img.fit-whole {
    match — tighter padding, a smaller heading that won't wrap awkwardly, and
    slightly smaller body copy. Together this keeps the section to about one
    screen. */
+/* The little LIVE badge on the two projects that are online */
+.live-pill {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--orange-soft);
+  padding: 0.2rem 0.45rem;
+  border-radius: 999px;
+}
+
 .fun-card-text { padding: 0.7rem 0.9rem 0.9rem; }
 
 .fun-card h3 {
@@ -1359,10 +1385,7 @@ a.fun-card:focus-visible {
    11. RESPONSIVE — tablets & phones
    -------------------------------------------------------------------------- */
 @media (max-width: 900px) {
-  /* The two homepage columns stack: intro first, then the work cards.
-     The intro also stops sticking — there's no room for it to be useful. */
-  .intro-works-grid { grid-template-columns: 1fr; gap: clamp(2rem, 6vw, 3rem); }
-  .intro-col { position: static; top: auto; }
+  .works-grid { grid-template-columns: 1fr; max-width: 26rem; margin: 0 auto; }
 
   .food-grid { grid-template-columns: repeat(2, 1fr); }   /* tablet */
   .fun-grid { grid-template-columns: repeat(2, 1fr); }    /* tablet */

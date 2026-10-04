@@ -3,15 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Megan — UX &amp; Experience Designer</title>
-  <meta name="description" content="Portfolio of Megan, UX / experience designer and researcher.">
+  <title>Megan Sim | UX Researcher &amp; Experience Designer</title>
   <meta name="robots" content="noindex">  <!-- keeps the site out of Google while it's private -->
+  <meta name="description" content="UX research and experience design, currently in banking and moving into product and marketing. Case studies in usability labs, diary studies and concept testing.">
+
+  <!-- How the site looks when someone pastes a link into LinkedIn, Slack,
+       WhatsApp or similar. ✏️ The preview picture is images/og-preview.png -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Megan Sim">
+  <meta property="og:title" content="Megan Sim | UX Researcher &amp; Experience Designer">
+  <meta property="og:description" content="UX research and experience design, currently in banking and moving into product and marketing. Case studies in usability labs, diary studies and concept testing.">
+  <meta property="og:url" content="https://okbyemegs.github.io/portfolio/">
+  <meta property="og:image" content="https://okbyemegs.github.io/portfolio/images/og-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Megan Sim | UX Researcher &amp; Experience Designer">
+  <meta name="twitter:description" content="UX research and experience design, currently in banking and moving into product and marketing. Case studies in usability labs, diary studies and concept testing.">
+  <meta name="twitter:image" content="https://okbyemegs.github.io/portfolio/images/og-preview.png">
 
   <!-- Fonts: Fraunces (headings) + Karla (body) — free Google fonts,
        self-hosted in the fonts/ folder so they load fast and work offline -->
-  <link rel="stylesheet" href="fonts/fonts.css?v=2026-09-25">
+  <link rel="stylesheet" href="fonts/fonts.css?v=2026-10-04">
 
-  <link rel="stylesheet" href="css/style.css?v=2026-09-25">
+  <link rel="stylesheet" href="css/style.css?v=2026-10-04">
 </head>
 <body>
 
@@ -30,49 +45,40 @@
   <main>
 
   <!-- ======================================================================
-       1. INTRO + SELECT WORKS — two columns side by side on desktop.
-
-       The LEFT column is "position: sticky", so it stays put while the work
-       cards in the RIGHT column scroll past it. No JavaScript involved.
-       Below 900px the two stack: the intro first, then the cards.
+       1. HERO — deliberately spare. Identity line, name, one paragraph and
+       a quiet link down to the work. Nothing else competes for the first
+       screen.
        ====================================================================== -->
-  <div class="intro-works">
-    <div class="container intro-works-grid">
+  <header class="hero">
+    <div class="container">
+      <!-- ✏️ EDIT: your one-line identity / role line -->
+      <p class="hero-role">UX Researcher &amp; Experience Designer moving into product and marketing.</p>
+      <!-- "tickle-words" makes each word jiggle when the cursor is near
+           (the effect + its intensity settings live in js/tickle.js) -->
+      <h1 class="tickle-words">Hi there, I am <span class="accent">Megan</span>.</h1>
+      <!-- ✏️ EDIT: your short hero intro paragraph -->
+      <p class="hero-intro tickle">
+        I'm an experience designer who thinks good research should end in a
+        decision, and ideally do a little social good on the way there. Currently
+        in banking, increasingly pulled toward product!
+      </p>
 
-      <!-- ================= LEFT: the intro that stays put ================= -->
-      <header class="intro-col">
-        <!-- ✏️ EDIT: your one-line identity / role line -->
-        <p class="hero-role">UX Researcher &amp; Experience Designer moving into product and marketing.</p>
-        <!-- "tickle-words" makes each word jiggle when the cursor is near
-             (the effect + its intensity settings live in js/tickle.js) -->
-        <h1 class="tickle-words">Hi there, I am <span class="accent">Megan</span>.</h1>
-        <!-- ✏️ EDIT: your short hero intro paragraph
-             ("tickle" = the whole block jiggles when the cursor is near) -->
-        <p class="hero-intro tickle">
-          I'm an experience designer who thinks good research should end in a
-          decision, and ideally do a little social good on the way there. Currently
-          in banking, increasingly pulled toward product!
-        </p>
+      <!-- Scrolls smoothly down to the work. The arrow bounces gently, and
+           holds still for anyone who has asked for less motion. -->
+      <a class="hero-jump" href="#works">See my works <span class="hero-jump-arrow" aria-hidden="true">&#8595;</span></a>
+    </div>
+  </header>
 
-        <!-- The methods I work with, as small coloured pills.
-             ✏️ TO ADD OR REMOVE ONE: copy or delete a whole <li> line. The
-                colours cycle on their own, so you never pick one. -->
-        <ul class="method-pills">
-          <li>Usability labs</li>
-          <li>Diary studies</li>
-          <li>Concept testing</li>
-          <li>Competitor benchmarking</li>
-          <li>Workshop facilitation</li>
-        </ul>
-      </header>
+  <!-- ======================================================================
+       2. MY WORKS — three cards across on desktop, one on a phone.
+       Each card links to its own case study page (project-1.html etc.)
+       ====================================================================== -->
+  <section class="works" id="works">
+    <div class="container">
+      <span class="eyebrow">01 — Select Works</span>
+      <h2 class="section-title">My <span class="accent">works</span></h2>
 
-      <!-- ============ RIGHT: the work cards, scrolling normally ============
-           Each card links to its own case study page (project-1.html etc.) -->
-      <section class="works-col" id="works">
-        <span class="eyebrow">01 — Select Works</span>
-        <h2 class="section-title">My <span class="accent">works</span></h2>
-
-        <div class="works-stack">
+      <div class="works-grid">
 
           <!-- CARD 1 — ✏️ edit title & description; replace the image -->
           <a class="work-card" href="project-1.html">
@@ -84,7 +90,7 @@
               <!-- ✏️ EDIT: the little label above the title -->
               <span class="work-card-tag">Shipped product · 35% lift in account openings</span>
               <h3>FRANK Account &amp; Debit Card</h3>
-              <p>A full rebrand and reward overhaul for OCBC's student product — where the new construct was strong, but people couldn't decode it.</p>
+              <p>A full rebrand and reward overhaul for OCBC's student product, where the new construct was strong, but people couldn't decode it.</p>
               <span class="work-card-more">Read case study →</span>
             </div>
           </a>
@@ -100,7 +106,7 @@
               <!-- ✏️ EDIT: the little label above the title -->
               <span class="work-card-tag">4.76/5 first impression · 5 product conversions</span>
               <h3>Conversational AI Chatbot</h3>
-              <p>Testing whether a Gen AI chatbot could handle real banking questions — before committing to build one.</p>
+              <p>Testing whether a Gen AI chatbot could handle real banking questions, before committing to build one.</p>
               <span class="work-card-more">Read case study →</span>
             </div>
           </a>
@@ -112,17 +118,15 @@
             <div class="work-card-text">
               <!-- ✏️ EDIT: the little label above the title -->
               <span class="work-card-tag">4.3/5 usability · reshaped the roadmap</span>
-              <h3>Soft Bundling — A Unified Onboarding Journey</h3>
+              <h3>Soft Bundling: A Unified Onboarding Journey</h3>
               <p>Two phases of research to help new and existing OCBC customers apply for multiple products in a single, seamless journey.</p>
               <span class="work-card-more">Read case study →</span>
             </div>
           </a>
 
-        </div>
-      </section>
-
+      </div>
     </div>
-  </div>
+  </section>
 
     <!-- ====================================================================
          3. ABOUT ME
@@ -140,7 +144,7 @@
             <div class="about-body">
               <!-- ✏️ EDIT: your About Me paragraphs -->
               <p>
-                In my 9-to-6, I design for the next big thing in banking — interviewing
+                In my 9-to-6, I design for the next big thing in banking: interviewing
                 users, asking a lot of questions, and synthesising research along the
                 way. I believe the best products feel like a warm conversation.
               </p>
@@ -150,6 +154,18 @@
                 I care about designing with empathy, and having fun while I'm at it.
               </p>
             </div>
+
+          <!-- The methods I work with, as small coloured pills.
+               ✏️ TO ADD OR REMOVE ONE: copy or delete a whole <li> line. The
+                  colours cycle on their own, so you never pick one. -->
+          <ul class="method-pills">
+            <li>Usability labs</li>
+            <li>Diary studies</li>
+            <li>Concept testing</li>
+            <li>Competitor benchmarking</li>
+            <li>Workshop facilitation</li>
+          <li>Messaging &amp; value communication</li>
+          </ul>
           </div>
 
           <!-- ✏️ REPLACE IMAGE: overwrite images/portrait.jpg -->
@@ -172,9 +188,9 @@
         <!-- A playful aside, tacked on like a sticky note. It's plain text,
              not a link, and it never blocks clicks on the cards.
              ✏️ EDIT or delete this line freely. -->
-        <p class="fun-credit">PS — this whole portfolio was vibe-coded with Claude Code too.</p>
+        <p class="fun-credit">PS: this whole portfolio was vibe-coded with Claude Code too.</p>
 
-        <span class="eyebrow">03 — Other Fun Things</span>
+        <span class="eyebrow">03 — Built &amp; Baked</span>
         <h2 class="section-title">Life outside <span class="accent">the Figma file</span></h2>
 
         <div class="fun-grid">
@@ -189,9 +205,8 @@
                  cropped to fit the card (see .crop-top in css/style.css) -->
             <img class="crop-top" src="images/fun-photobooth.jpg" width="1165" height="1081" loading="lazy" alt="Screenshot of the online photobooth">
             <div class="fun-card-text">
-              <h3>Vibe code project #1: Photobooth 📸</h3>
-              <p>An online photobooth I made, filled with different themes and emoji
-                designs!</p>
+              <h3>Vibe code project #1: Photobooth 📸 <span class="live-pill">Live</span></h3>
+              <p>An online photobooth I built, with different themes and emoji designs. Live now, so give it a go!</p>
               <span class="fun-card-link">Try it out ↗</span>
             </div>
           </a>
@@ -204,9 +219,8 @@
                  trimmed off each side. -->
             <img src="images/fun-gachapon.jpg" width="1510" height="1340" loading="lazy" alt="Screenshot of the gachapon gift website">
             <div class="fun-card-text">
-              <h3>Vibe coding project #2: Gachapon 💻</h3>
-              <p>A little gachapon machine I built as a gift for my partner — give the
-                capsule a spin and see what you get.</p>
+              <h3>Vibe coding project #2: Gachapon 💻 <span class="live-pill">Live</span></h3>
+              <p>A little gachapon machine I built as a gift for my partner. Give the capsule a spin and see what you get.</p>
               <span class="fun-card-link">Try it out ↗</span>
             </div>
           </a>
@@ -254,10 +268,10 @@
 
   <footer class="site-footer">
     <!-- ✏️ EDIT: footer text -->
-    <p>© 2026 Megan — designed with care (and a Shiba Inu on my lap).</p>
+    <p>© 2026 Megan, designed with care (and a Shiba Inu on my lap).</p>
   </footer>
 
-  <script src="js/tickle.js?v=2026-09-25"></script>
-  <script src="js/sparkle.js?v=2026-09-25"></script>
+  <script src="js/tickle.js?v=2026-10-04"></script>
+  <script src="js/sparkle.js?v=2026-10-04"></script>
 </body>
 </html>
