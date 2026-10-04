@@ -401,14 +401,14 @@ a { color: var(--accent); }
 
 .work-card img {
   width: 100%;
-  /* Deliberately short and wide. A taller image pushed the second card
-     entirely below the fold, so nothing told you there was more to scroll.
+  /* Deliberately short and wide, so a card is mostly information rather
+     than mostly picture and the next one stays in view.
      ✏️ Make the second number bigger for shorter cards, smaller for taller. */
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 2.2 / 1;
   object-fit: cover;
 }
 
-.work-card-text { padding: 1.1rem 1.3rem 1.3rem; }
+.work-card-text { padding: 0.9rem 1.15rem 1.1rem; }
 
 /* The little label above each project title, e.g.
    "SHIPPED PRODUCT · 35% LIFT IN ACCOUNT OPENINGS".
@@ -438,12 +438,12 @@ a { color: var(--accent); }
 }
 
 .work-card h3 {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   line-height: 1.25;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.35rem;
 }
 
-.work-card p { font-size: 0.93rem; line-height: 1.55; opacity: 0.85; }
+.work-card p { font-size: 0.9rem; line-height: 1.5; opacity: 0.85; }
 
 .work-card-more {
   display: inline-block;
