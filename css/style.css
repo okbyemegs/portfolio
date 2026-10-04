@@ -399,13 +399,28 @@ a { color: var(--accent); }
   box-shadow: 0 18px 40px rgba(27, 58, 75, 0.18);
 }
 
+/* Cover image. On desktop this sits BESIDE the text in a portrait-shaped
+   panel (see .work-card below), because every cover is a tall or square
+   picture and a short wide slot was throwing most of each one away. */
 .work-card img {
   width: 100%;
-  /* Deliberately short and wide, so a card is mostly information rather
-     than mostly picture and the next one stays in view.
-     ✏️ Make the second number bigger for shorter cards, smaller for taller. */
-  aspect-ratio: 2.2 / 1;
+  height: 100%;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
+}
+
+/* Desktop: image on the left, words on the right. The card is only as tall
+   as the picture, which is how it stays compact while showing much more of
+   it than a cropped strip ever did.
+   ✏️ Change "38%" to give the picture more or less of the card. */
+@media (min-width: 901px) {
+  .work-card {
+    display: grid;
+    grid-template-columns: 38% 1fr;
+    align-items: stretch;
+  }
+  .work-card img { height: 100%; }
+  .work-card-text { align-self: center; }
 }
 
 .work-card-text { padding: 0.9rem 1.15rem 1.1rem; }
@@ -1408,6 +1423,11 @@ a.fun-card:focus-visible {
      The intro stops sticking, and the jump link appears because the cards
      are no longer sitting beside the text. */
   .intro-works-grid { grid-template-columns: 1fr; gap: clamp(1.75rem, 5vw, 2.5rem); }
+  /* Stacked card: the picture sits on top again, in a shallower window so
+     the card doesn't become one long photograph. The stack is also capped
+     so a card doesn't grow enormous on a tablet-width screen. */
+  .works-stack { max-width: 23rem; margin: 0 auto; }
+  .work-card img { aspect-ratio: 4 / 3; height: auto; }
   .intro-col { position: static; top: auto; }
   .hero-jump { display: inline-block; }
 
