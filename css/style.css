@@ -190,29 +190,55 @@ a { color: var(--accent); }
 /* --------------------------------------------------------------------------
    4. HERO
    -------------------------------------------------------------------------- */
-.hero {
+/* Restored from commit cb1adea — the sticky two-column top of the homepage. */
+.intro-works {
   background: var(--cream);
-  padding-top: clamp(2rem, 4vw, 3.25rem);
-  padding-bottom: clamp(2rem, 4vw, 3.25rem);
+  padding-top: clamp(1.75rem, 3.5vw, 2.75rem);
+  padding-bottom: var(--section-pad);
 }
 
-/* A quiet link down to the work, with a gently bouncing arrow. */
-.hero-jump {
-  display: inline-block;
-  margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--accent);
-  border-bottom: 2px solid transparent;
-  padding-bottom: 2px;
+/* Two columns: the intro on the left, the work cards on the right.
+   "align-items: start" is what MAKES THE STICKY WORK — without it the left
+   column is stretched to the full height of the row and has nothing to
+   stick within. Don't remove it. */
+.intro-works-grid {
+  display: grid;
+  grid-template-columns: 38fr 62fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
 }
 
-.hero-jump:hover,
-.hero-jump:focus-visible { border-bottom-color: var(--accent); }
+/* The intro stays put while the cards scroll past it. The offset clears the
+   sticky nav bar above (--nav-h) plus a little breathing room. */
+.intro-col {
+  position: sticky;
+  top: calc(var(--nav-h) + 1.5rem);
+}
+
+/* The three cards, stacked down the right-hand column.
+   The width is capped so no cover image is ever blown up past its own
+   pixels. The cap is set by the SMALLEST source on the page, which is
+   chatbot-card.jpg at 375px wide.
+   ✏️ If you re-export that cover bigger, raise this number to match and the
+      cards grow with it. */
+.works-stack {
+  display: grid;
+  gap: clamp(1.25rem, 2.5vw, 1.75rem);
+  max-width: 375px;
+}
+
+/* "My works" is a column heading here, not a full-width section title, so
+   it is set smaller and tighter than the ones further down the page. */
+.works-col .section-title {
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  margin-bottom: clamp(1rem, 2vw, 1.4rem);
+}
+
+.works-col .eyebrow { margin-bottom: 0.75rem; }
+
+/* The jump link is only needed once the columns stack and the cards are no
+   longer beside the text, so it is hidden while the split layout is on. */
+.hero-jump { display: none; }
 
 .hero-jump-arrow {
   display: inline-block;
@@ -230,22 +256,9 @@ a { color: var(--accent); }
   .hero-jump-arrow { animation: none; }
 }
 
-/* The short role line above "Hi there, I am Megan."
-   Kept small and quiet so the name still leads. */
-.hero-role {
-  font-family: var(--font-body);
-  font-size: clamp(0.9rem, 1.3vw, 1rem);
-  font-weight: 700;
-  line-height: 1.5;
-  letter-spacing: 0.01em;
-  color: var(--accent);
-  max-width: 32em;
-  margin-bottom: 1rem;
-}
-
-.hero h1 {
-  font-size: clamp(2.5rem, 5vw, 4.25rem);
-  margin-bottom: 1.25rem;
+.intro-col h1 {
+  font-size: clamp(2.3rem, 4.2vw, 3.5rem);
+  margin-bottom: 1.1rem;
 }
 
 .hero-intro {
@@ -353,15 +366,6 @@ a { color: var(--accent); }
 /* --------------------------------------------------------------------------
    6. MY WORKS — the 3 project cards
    -------------------------------------------------------------------------- */
-/* ✏️ The works section sits on the warm off-white, with white cards on top */
-.works { background: var(--off-white); padding: clamp(2.5rem, 5vw, 4rem) 0 var(--section-pad); }
-
-.works-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(1.25rem, 2.5vw, 2rem);
-}
-
 /* The whole card is one big link */
 .work-card {
   display: block;
@@ -390,7 +394,7 @@ a { color: var(--accent); }
   object-fit: cover;
 }
 
-.work-card-text { padding: 1.15rem 1.35rem 1.35rem; }
+.work-card-text { padding: 0.95rem 1.1rem 1.15rem; }
 
 /* The little label above each project title, e.g.
    "SHIPPED PRODUCT · 35% LIFT IN ACCOUNT OPENINGS".
@@ -420,11 +424,12 @@ a { color: var(--accent); }
 }
 
 .work-card h3 {
-  font-size: 1.3rem;
-  margin-bottom: 0.4rem;
+  font-size: 1.1rem;
+  line-height: 1.25;
+  margin-bottom: 0.35rem;
 }
 
-.work-card p { font-size: 0.98rem; opacity: 0.85; }
+.work-card p { font-size: 0.88rem; line-height: 1.5; opacity: 0.85; }
 
 .work-card-more {
   display: inline-block;
@@ -1385,7 +1390,12 @@ a.fun-card:focus-visible {
    11. RESPONSIVE — tablets & phones
    -------------------------------------------------------------------------- */
 @media (max-width: 900px) {
-  .works-grid { grid-template-columns: 1fr; max-width: 26rem; margin: 0 auto; }
+  /* The two homepage columns stack: intro first, then the work cards.
+     The intro stops sticking, and the jump link appears because the cards
+     are no longer sitting beside the text. */
+  .intro-works-grid { grid-template-columns: 1fr; gap: clamp(1.75rem, 5vw, 2.5rem); }
+  .intro-col { position: static; top: auto; }
+  .hero-jump { display: inline-block; }
 
   .food-grid { grid-template-columns: repeat(2, 1fr); }   /* tablet */
   .fun-grid { grid-template-columns: repeat(2, 1fr); }    /* tablet */

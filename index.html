@@ -45,40 +45,42 @@
   <main>
 
   <!-- ======================================================================
-       1. HERO — deliberately spare. Identity line, name, one paragraph and
-       a quiet link down to the work. Nothing else competes for the first
-       screen.
+       1. INTRO + SELECT WORKS — two columns side by side on desktop.
+
+       The LEFT column is "position: sticky", so it stays put while the work
+       cards in the RIGHT column scroll past it. No JavaScript involved.
+       Below 900px the two stack: the intro first, then the cards.
        ====================================================================== -->
-  <header class="hero">
-    <div class="container">
-      <!-- ✏️ EDIT: your one-line identity / role line -->
-      <p class="hero-role">UX Researcher &amp; Experience Designer moving into product and marketing.</p>
-      <!-- "tickle-words" makes each word jiggle when the cursor is near
-           (the effect + its intensity settings live in js/tickle.js) -->
-      <h1 class="tickle-words">Hi there, I am <span class="accent">Megan</span>.</h1>
-      <!-- ✏️ EDIT: your short hero intro paragraph -->
-      <p class="hero-intro tickle">
-        I'm an experience designer who thinks good research should end in a
-        decision, and ideally do a little social good on the way there. Currently
-        in banking, increasingly pulled toward product!
-      </p>
+  <div class="intro-works">
+    <div class="container intro-works-grid">
 
-      <!-- Scrolls smoothly down to the work. The arrow bounces gently, and
-           holds still for anyone who has asked for less motion. -->
-      <a class="hero-jump" href="#works">See my works <span class="hero-jump-arrow" aria-hidden="true">&#8595;</span></a>
-    </div>
-  </header>
+      <!-- ================= LEFT: the intro that stays put ================= -->
+      <header class="intro-col">
+        <!-- ✏️ EDIT: your one-line identity / role line -->
+        <p class="hero-role">UX Researcher &amp; Experience Designer moving into product and marketing.</p>
+        <!-- "tickle-words" makes each word jiggle when the cursor is near
+             (the effect + its intensity settings live in js/tickle.js) -->
+        <h1 class="tickle-words">Hi there, I am <span class="accent">Megan</span>.</h1>
+        <!-- ✏️ EDIT: your short hero intro paragraph -->
+        <p class="hero-intro tickle">
+          I'm an experience designer who thinks good research should end in a
+          decision, and ideally do a little social good on the way there. Currently
+          in banking, increasingly pulled toward product!
+        </p>
 
-  <!-- ======================================================================
-       2. MY WORKS — three cards across on desktop, one on a phone.
-       Each card links to its own case study page (project-1.html etc.)
-       ====================================================================== -->
-  <section class="works" id="works">
-    <div class="container">
-      <span class="eyebrow">01 — Select Works</span>
-      <h2 class="section-title">My <span class="accent">works</span></h2>
+        <!-- Only shown once the columns stack on a phone, where the cards are
+             no longer sitting right beside this text. The arrow bounces
+             gently, and holds still for anyone who asked for less motion. -->
+        <a class="hero-jump" href="#works">See my works <span class="hero-jump-arrow" aria-hidden="true">&#8595;</span></a>
+      </header>
 
-      <div class="works-grid">
+      <!-- ============ RIGHT: the work cards, scrolling normally ============
+           Each card links to its own case study page (project-1.html etc.) -->
+      <section class="works-col" id="works">
+        <span class="eyebrow">01 — Select Works</span>
+        <h2 class="section-title">My <span class="accent">works</span></h2>
+
+        <div class="works-stack">
 
           <!-- CARD 1 — ✏️ edit title & description; replace the image -->
           <a class="work-card" href="project-1.html">
@@ -124,9 +126,11 @@
             </div>
           </a>
 
-      </div>
+        </div>
+      </section>
+
     </div>
-  </section>
+  </div>
 
     <!-- ====================================================================
          3. ABOUT ME
