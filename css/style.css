@@ -409,6 +409,13 @@ a { color: var(--accent); }
   object-fit: cover;
 }
 
+/* A squarer panel for a cover that is itself nearly square. The default
+   3:4 panel suits tall images; a square one would waste the tall ones but
+   is right for this shape, so it is opt-in per image.
+   ✏️ Add class="panel-square" to an <img> whose picture is being trimmed
+      too much at the sides. */
+.work-card img.panel-square { aspect-ratio: 1 / 1; }
+
 /* Desktop: image on the left, words on the right. The card is only as tall
    as the picture, which is how it stays compact while showing much more of
    it than a cropped strip ever did.
@@ -1423,11 +1430,12 @@ a.fun-card:focus-visible {
      The intro stops sticking, and the jump link appears because the cards
      are no longer sitting beside the text. */
   .intro-works-grid { grid-template-columns: 1fr; gap: clamp(1.75rem, 5vw, 2.5rem); }
-  /* Stacked card: the picture sits on top again, in a shallower window so
-     the card doesn't become one long photograph. The stack is also capped
-     so a card doesn't grow enormous on a tablet-width screen. */
+  /* Stacked card: the picture sits on top again, but keeps the same
+     portrait window as the desktop layout — a shallower one was throwing
+     away most of these tall covers. The stack is capped so a card cannot
+     grow wider than the smallest cover on the page. */
   .works-stack { max-width: 23rem; margin: 0 auto; }
-  .work-card img { aspect-ratio: 4 / 3; height: auto; }
+  .work-card img { height: auto; }
   .intro-col { position: static; top: auto; }
   .hero-jump { display: inline-block; }
 
